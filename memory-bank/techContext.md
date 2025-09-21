@@ -1,25 +1,21 @@
-# Technical Context: Los Agapandos Website
+# Technical Context: Los Agapandos Web Application
 
 ## Technology Stack and Versions
-- **Framework:** Astro (latest stable version)
-- **Styling:** Tailwind CSS (latest stable version)
-- **JavaScript Libraries:**
-    - Swiper.js (v11, loaded via CDN)
-    - GSAP (latest stable version)
-    - ScrollTrigger (GSAP plugin)
-    - Lenis (for smooth scrolling, used in `seccion3.astro`)
-- **Language:** TypeScript (for Astro components and client-side scripts)
+- **Frontend Framework**: Astro (latest stable version implied, will confirm if needed).
+- **Language**: JavaScript/TypeScript (for Astro components and client-side logic).
+- **Styling**: CSS (potentially with Tailwind CSS, based on class names).
+- **Package Manager**: Bun (based on `bun.lock` file).
+- **360 Panorama Viewer**: Pannellum (will be integrated as a client-side library).
 
 ## Development Environment Setup
-- Node.js and npm/bun for package management.
-- Astro CLI for project setup and development server.
-- VS Code with Astro and Tailwind CSS extensions for enhanced development experience.
+- Node.js (compatible with Astro and Bun).
+- Bun for package management.
+- VS Code with Astro extensions (recommended).
 
 ## External Dependencies
-- Swiper.js CSS and JS bundles from CDN (`https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css`, `https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js`).
-- Google Fonts (Aguafina Script, Poppins - implicitly used through global CSS or Tailwind config).
+- **Pannellum**: A lightweight, free, and open-source panorama viewer for the web. Loaded via CDN (https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/) for reliability and ease of integration.
 
 ## Technical Constraints and Limitations
-- **Astro's Island Architecture:** Requires careful consideration of where client-side JavaScript runs and how it interacts with server-rendered HTML.
-- **Global Scripting:** Direct manipulation of global variables from CDN-loaded scripts might require TypeScript declarations (e.g., `declare var Swiper: any;`).
-- **Styling Conflicts:** Global CSS can conflict with Tailwind CSS; scoped styles or Tailwind utilities are preferred.
+- Performance budget for client-side JavaScript to maintain fast load times.
+- Compatibility with modern browsers.
+- Image optimization for faster loading of gallery assets.

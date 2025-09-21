@@ -1,0 +1,581 @@
+---
+// Specifications for Cabañas Chicas
+const chicasSpecs = {
+  capacidad: "6 personas",
+  recamaras: "2 recámaras",
+  camas: ["1 cama Queen", "2 camas individuales", "1 litera"],
+  banos: "2 baños completos",
+  amenities: [
+    "Cocina comedor",
+    "Estancia con chimenea",
+    "Asador independiente",
+    "Cochera independiente para 2 carros",
+    "Planta baja (una sola planta)",
+  ],
+};
+
+// Specifications for Cabañas Grandes
+const grandesSpecs = {
+  capacidad: "10 personas",
+  recamaras: "3 recámaras",
+  camas: ["1 cama King", "1 cama Queen", "6 camas individuales"],
+  banos: "3 baños completos",
+  amenities: [
+    "Cocina comedor",
+    "Estancia con chimenea",
+    "Asador independiente",
+    "Cochera independiente para 3 carros",
+    "Dos plantas (planta baja y planta alta)",
+  ],
+};
+---
+
+<section class="relative w-full py-4 md:py-8">
+  <div class="flex flex-col items-center w-full max-w-none">
+    <h2
+      class="text-4xl md:text-6xl text-white italianno-regular text-center mb-4 my-4"
+    >
+      Especificaciones
+    </h2>
+
+    <div class="text-center mb-4 py-4">
+      <button
+        onclick="toggleSpecs()"
+        class="bg-white text-black px-4 py-2 text-base md:px-6 md:py-3 md:text-lg rounded-full hover:bg-gray-200 transition-colors duration-300 font-medium"
+        id="specs-toggle-button"
+      >
+        Ver cabañas chicas
+      </button>
+    </div>
+
+    <!-- Cabañas Grandes Specs -->
+    <div id="grandes-specs" class="specs-section w-full">
+      <p
+        class="text-white text-center text-3xl md:text-5xl mb-4 italianno-regular"
+      >
+        Cabañas Grandes
+      </p>
+      <div class="w-full px-4 md:px-8">
+        <div
+          class="w-full bg-white/10 backdrop-blur-sm rounded-xl shadow-xl p-2 md:p-4"
+        >
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+            <!-- Capacidad -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.0004 4.98112H23.9947V0H8.00586V32H23.9947V7.5035L19.0155 7.52144L19.0135 8.00688C19.0101 8.86719 18.6374 9.68712 17.9911 10.2564C17.336 10.8336 16.492 11.0918 15.6154 10.9839C14.2566 10.8166 13.1595 9.70675 13.0068 8.34494C12.9089 7.47219 13.174 6.63469 13.7532 5.98688C14.3246 5.34769 15.1437 4.98112 16.0004 4.98112ZM13.0239 5.33475C12.2677 6.1805 11.907 7.31744 12.0345 8.45394C12.2372 10.2606 13.6929 11.7329 15.4959 11.9549C16.6374 12.0955 17.7825 11.7439 18.6378 10.9906C19.3711 10.3446 19.8384 9.45475 19.9602 8.49631L23.0163 8.48538V31.0216H8.98423V0.978375H23.0164V4.00281H16.0004C14.8655 4.00281 13.7806 4.48825 13.0239 5.33475Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 22.0156H10.9961V22.994H21.0028V22.0156Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 26.0181H10.9961V26.9964H21.0028V26.0181Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 28.0195H10.9961V28.9979H21.0028V28.0195Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M13.9983 24.0166H10.9961V24.995H13.9983V24.0166Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="text-white text-sm md:text-base font-poppins"
+                >{grandesSpecs.capacidad}</span
+              >
+            </div>
+
+            <!-- Recámaras -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.0004 4.98112H23.9947V0H8.00586V32H23.9947V7.5035L19.0155 7.52144L19.0135 8.00688C19.0101 8.86719 18.6374 9.68712 17.9911 10.2564C17.336 10.8336 16.492 11.0918 15.6154 10.9839C14.2566 10.8166 13.1595 9.70675 13.0068 8.34494C12.9089 7.47219 13.174 6.63469 13.7532 5.98688C14.3246 5.34769 15.1437 4.98112 16.0004 4.98112ZM13.0239 5.33475C12.2677 6.1805 11.907 7.31744 12.0345 8.45394C12.2372 10.2606 13.6929 11.7329 15.4959 11.9549C16.6374 12.0955 17.7825 11.7439 18.6378 10.9906C19.3711 10.3446 19.8384 9.45475 19.9602 8.49631L23.0163 8.48538V31.0216H8.98423V0.978375H23.0164V4.00281H16.0004C14.8655 4.00281 13.7806 4.48825 13.0239 5.33475Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 22.0156H10.9961V22.994H21.0028V22.0156Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 26.0181H10.9961V26.9964H21.0028V26.0181Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 28.0195H10.9961V28.9979H21.0028V28.0195Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M13.9983 24.0166H10.9961V24.995H13.9983V24.0166Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="text-white text-sm md:text-base font-poppins"
+                >{grandesSpecs.recamaras}</span
+              >
+            </div>
+
+            <!-- Camas -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 18.5469V23.6402H30V18.5469"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M2 13.4531H26.1867C26.6931 13.453 27.1945 13.5538 27.6615 13.7496C28.1286 13.9454 28.552 14.2323 28.9069 14.5935C29.2619 14.9547 29.5414 15.383 29.7291 15.8533C29.9168 16.3237 30.0089 16.8268 30 17.3331V18.6665H2V13.4531Z"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M8.36048 8.35986H4.54715C3.14066 8.35986 2.00048 9.50004 2.00048 10.9065C2.00048 12.313 2 13.4532 2 13.4532H8.36048C9.76696 13.4532 10.9071 12.313 10.9071 10.9065C10.9071 9.50004 9.76696 8.35986 8.36048 8.35986Z"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M13.4531 13.4531V18.5465"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M2 3.2666V13.4533"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M2 28.7335V23.6401"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M30 28.7335V23.6401"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+              </svg>
+              <div class="text-white text-xs md:text-sm font-poppins text-left">
+                {
+                  grandesSpecs.camas.map((cama) => (
+                    <div class="text-left">{cama}</div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- Baños -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.9999 17.0034H31.4999H0.99998H0V18.0035H0.99998V19.3348C0.99998 24.2706 4.71777 28.3538 9.49994 28.9326V30.5034H10.5V29.0013C10.5561 29.0023 10.6122 29.0034 10.6687 29.0034H21.5V30.5035H22.5V28.9799C27.5205 28.6352 31.5 24.4413 31.5 19.3347V18.0034H32L31.9999 17.0034ZM21.8313 28.0034H10.6686C5.88872 28.0034 1.99996 24.1147 1.99996 19.3348V18.0035H30.4999V19.3348H30.5C30.5 24.1147 26.6113 28.0034 21.8313 28.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M28 19.0034H4.5V20.0035H28V19.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M6.99287 4.69538V5.54019C5.57551 5.78202 4.49292 7.01841 4.49292 8.50369V9.0108H10.507V8.50369C10.507 7.01835 9.42444 5.78196 8.00702 5.54013V4.69538C8.00702 2.93151 6.57203 1.49658 4.80822 1.49658H0V2.51073H4.80822C6.01281 2.51073 6.99287 3.49079 6.99287 4.69538ZM7.49998 6.51065C8.42368 6.51065 9.20266 7.14243 9.42751 7.99651H5.57244C5.7973 7.14237 6.57628 6.51065 7.49998 6.51065Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M15.4929 11.5107H28.5071V4.51078H29.5V3.49663H29.4999H28.3164C28.0196 2.90436 27.4071 2.49658 26.7008 2.49658H17.2991C16.5928 2.49658 15.9802 2.90436 15.6835 3.49663H14.5V4.51078H15.4929V11.5107ZM16.507 4.30278C16.507 3.866 16.8623 3.51073 17.2991 3.51073H26.7008C27.1375 3.51073 27.4928 3.866 27.4928 4.30278V10.4965H16.507V4.30278Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M16.5063 12.0034H15.4922V13.5035H16.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M18.5063 12.0034H17.4922V13.5035H18.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M20.5063 12.0034H19.4922V13.5035H20.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M22.5063 12.0034H21.4922V13.5035H22.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M24.5063 12.0034H23.4922V13.5035H24.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M26.5063 12.0034H25.4922V13.5035H26.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M28.5063 12.0034H27.4922V13.5035H28.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M26.5 8.49658H17.5V9.51073H26.5V8.49658Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M6.00634 10.0034H4.99219V12.5034H6.00634V10.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M8.00634 10.0034H6.99219V14.0034H8.00634V10.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M10.00634 10.0034H8.99219V11.5035H10.00634V10.0034Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="text-white text-sm md:text-base font-poppins"
+                >{grandesSpecs.banos}</span
+              >
+            </div>
+
+            <!-- Amenidades -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 22.6667H30M2 22.6667V27.3333H30V22.6667M2 22.6667V18C2 10.268 8.26802 4 16 4M30 22.6667V18C30 10.268 23.732 4 16 4M16 4V8.66667M16 8.66667C21.1546 8.66667 25.3333 12.8453 25.3333 18V22.6667H6.66667V18C6.66667 12.8453 10.8453 8.66667 16 8.66667ZM28.25 17.2222H25.3333M6.66667 17.2222H3.82292M8.48273 12.8821L4.54921 10.6111M11.8022 9.95149L10.0208 7.03772M20.1978 9.95149L22.0521 7.03772M23.5172 12.8821L27.4508 10.6111M17.7736 12.9257C19.3566 15.4987 20.1482 17.363 20.1482 18.5185C20.1482 20.8095 18.291 22.6667 16 22.6667C13.709 22.6667 11.8518 20.8095 11.8518 18.5185C11.8518 17.9851 12.0205 17.3005 12.3579 16.465L14.8878 17.9247L17.7736 12.9257Z"
+                  stroke="currentColor"
+                  stroke-linejoin="round"></path>
+              </svg>
+              <div class="text-white text-xs md:text-sm font-poppins text-left">
+                {
+                  grandesSpecs.amenities.map((amenity) => (
+                    <div class="text-left">{amenity}</div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cabañas Chicas Specs -->
+    <div id="chicas-specs" class="specs-section hidden w-full">
+      <p
+        class="text-white text-center text-3xl md:text-5xl mb-4 italianno-regular"
+      >
+        Cabañas Chicas
+      </p>
+      <div class="w-full px-4 md:px-8">
+        <div
+          class="w-full bg-white/10 backdrop-blur-sm rounded-xl shadow-xl p-2 md:p-4"
+        >
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+            <!-- Capacidad -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.0004 4.98112H23.9947V0H8.00586V32H23.9947V7.5035L19.0155 7.52144L19.0135 8.00688C19.0101 8.86719 18.6374 9.68712 17.9911 10.2564C17.336 10.8336 16.492 11.0918 15.6154 10.9839C14.2566 10.8166 13.1595 9.70675 13.0068 8.34494C12.9089 7.47219 13.174 6.63469 13.7532 5.98688C14.3246 5.34769 15.1437 4.98112 16.0004 4.98112ZM13.0239 5.33475C12.2677 6.1805 11.907 7.31744 12.0345 8.45394C12.2372 10.2606 13.6929 11.7329 15.4959 11.9549C16.6374 12.0955 17.7825 11.7439 18.6378 10.9906C19.3711 10.3446 19.8384 9.45475 19.9602 8.49631L23.0163 8.48538V31.0216H8.98423V0.978375H23.0164V4.00281H16.0004C14.8655 4.00281 13.7806 4.48825 13.0239 5.33475Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 22.0156H10.9961V22.994H21.0028V22.0156Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 26.0181H10.9961V26.9964H21.0028V26.0181Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 28.0195H10.9961V28.9979H21.0028V28.0195Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M13.9983 24.0166H10.9961V24.995H13.9983V24.0166Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="text-white text-sm md:text-base font-poppins"
+                >{chicasSpecs.capacidad}</span
+              >
+            </div>
+
+            <!-- Recámaras -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M16.0004 4.98112H23.9947V0H8.00586V32H23.9947V7.5035L19.0155 7.52144L19.0135 8.00688C19.0101 8.86719 18.6374 9.68712 17.9911 10.2564C17.336 10.8336 16.492 11.0918 15.6154 10.9839C14.2566 10.8166 13.1595 9.70675 13.0068 8.34494C12.9089 7.47219 13.174 6.63469 13.7532 5.98688C14.3246 5.34769 15.1437 4.98112 16.0004 4.98112ZM13.0239 5.33475C12.2677 6.1805 11.907 7.31744 12.0345 8.45394C12.2372 10.2606 13.6929 11.7329 15.4959 11.9549C16.6374 12.0955 17.7825 11.7439 18.6378 10.9906C19.3711 10.3446 19.8384 9.45475 19.9602 8.49631L23.0163 8.48538V31.0216H8.98423V0.978375H23.0164V4.00281H16.0004C14.8655 4.00281 13.7806 4.48825 13.0239 5.33475Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 22.0156H10.9961V22.994H21.0028V22.0156Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 26.0181H10.9961V26.9964H21.0028V26.0181Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M21.0028 28.0195H10.9961V28.9979H21.0028V28.0195Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M13.9983 24.0166H10.9961V24.995H13.9983V24.0166Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="text-white text-sm md:text-base font-poppins"
+                >{chicasSpecs.recamaras}</span
+              >
+            </div>
+
+            <!-- Camas -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 18.5469V23.6402H30V18.5469"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M2 13.4531H26.1867C26.6931 13.453 27.1945 13.5538 27.6615 13.7496C28.1286 13.9454 28.552 14.2323 28.9069 14.5935C29.2619 14.9547 29.5414 15.383 29.7291 15.8533C29.9168 16.3237 30.0089 16.8268 30 17.3331V18.6665H2V13.4531Z"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M8.36048 8.35986H4.54715C3.14066 8.35986 2.00048 9.50004 2.00048 10.9065C2.00048 12.313 2 13.4532 2 13.4532H8.36048C9.76696 13.4532 10.9071 12.313 10.9071 10.9065C10.9071 9.50004 9.76696 8.35986 8.36048 8.35986Z"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M13.4531 13.4531V18.5465"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M2 3.2666V13.4533"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M2 28.7335V23.6401"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+                <path
+                  d="M30 28.7335V23.6401"
+                  stroke="currentColor"
+                  stroke-miterlimit="10"></path>
+              </svg>
+              <div class="text-white text-xs md:text-sm font-poppins text-left">
+                {
+                  chicasSpecs.camas.map((cama) => (
+                    <div class="text-left">{cama}</div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- Baños -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M31.9999 17.0034H31.4999H0.99998H0V18.0035H0.99998V19.3348C0.99998 24.2706 4.71777 28.3538 9.49994 28.9326V30.5034H10.5V29.0013C10.5561 29.0023 10.6122 29.0034 10.6687 29.0034H21.5V30.5035H22.5V28.9799C27.5205 28.6352 31.5 24.4413 31.5 19.3347V18.0034H32L31.9999 17.0034ZM21.8313 28.0034H10.6686C5.88872 28.0034 1.99996 24.1147 1.99996 19.3348V18.0035H30.4999V19.3348H30.5C30.5 24.1147 26.6113 28.0034 21.8313 28.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M28 19.0034H4.5V20.0035H28V19.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M6.99287 4.69538V5.54019C5.57551 5.78202 4.49292 7.01841 4.49292 8.50369V9.0108H10.507V8.50369C10.507 7.01835 9.42444 5.78196 8.00702 5.54013V4.69538C8.00702 2.93151 6.57203 1.49658 4.80822 1.49658H0V2.51073H4.80822C6.01281 2.51073 6.99287 3.49079 6.99287 4.69538ZM7.49998 6.51065C8.42368 6.51065 9.20266 7.14243 9.42751 7.99651H5.57244C5.7973 7.14237 6.57628 6.51065 7.49998 6.51065Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M15.4929 11.5107H28.5071V4.51078H29.5V3.49663H29.4999H28.3164C28.0196 2.90436 27.4071 2.49658 26.7008 2.49658H17.2991C16.5928 2.49658 15.9802 2.90436 15.6835 3.49663H14.5V4.51078H15.4929V11.5107ZM16.507 4.30278C16.507 3.866 16.8623 3.51073 17.2991 3.51073H26.7008C27.1375 3.51073 27.4928 3.866 27.4928 4.30278V10.4965H16.507V4.30278Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M16.5063 12.0034H15.4922V13.5035H16.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M18.5063 12.0034H17.4922V13.5035H18.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M20.5063 12.0034H19.4922V13.5035H20.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M22.5063 12.0034H21.4922V13.5035H22.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M24.5063 12.0034H23.4922V13.5035H24.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M26.5063 12.0034H25.4922V13.5035H26.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M28.5063 12.0034H27.4922V13.5035H28.5063V12.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M26.5 8.49658H17.5V9.51073H26.5V8.49658Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M6.00634 10.0034H4.99219V12.5034H6.00634V10.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M8.00634 10.0034H6.99219V14.0034H8.00634V10.0034Z"
+                  fill="currentColor"></path>
+                <path
+                  d="M10.00634 10.0034H8.99219V11.5035H10.00634V10.0034Z"
+                  fill="currentColor"></path>
+              </svg>
+              <span class="text-white text-sm md:text-base font-poppins"
+                >{chicasSpecs.banos}</span
+              >
+            </div>
+
+            <!-- Amenidades -->
+            <div class="flex items-center space-x-3">
+              <svg
+                class="w-6 h-6 text-white flex-shrink-0"
+                fill="none"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2 22.6667H30M2 22.6667V27.3333H30V22.6667M2 22.6667V18C2 10.268 8.26802 4 16 4M30 22.6667V18C30 10.268 23.732 4 16 4M16 4V8.66667M16 8.66667C21.1546 8.66667 25.3333 12.8453 25.3333 18V22.6667H6.66667V18C6.66667 12.8453 10.8453 8.66667 16 8.66667ZM28.25 17.2222H25.3333M6.66667 17.2222H3.82292M8.48273 12.8821L4.54921 10.6111M11.8022 9.95149L10.0208 7.03772M20.1978 9.95149L22.0521 7.03772M23.5172 12.8821L27.4508 10.6111M17.7736 12.9257C19.3566 15.4987 20.1482 17.363 20.1482 18.5185C20.1482 20.8095 18.291 22.6667 16 22.6667C13.709 22.6667 11.8518 20.8095 11.8518 18.5185C11.8518 17.9851 12.0205 17.3005 12.3579 16.465L14.8878 17.9247L17.7736 12.9257Z"
+                  stroke="currentColor"
+                  stroke-linejoin="round"></path>
+              </svg>
+              <div class="text-white text-xs md:text-sm font-poppins text-left">
+                {
+                  chicasSpecs.amenities.map((amenity) => (
+                    <div class="text-left">{amenity}</div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hidden {
+    display: none;
+  }
+  .specs-section {
+    width: 100%;
+    min-height: fit-content;
+    overflow: visible;
+  }
+  #grandes-specs {
+    opacity: 1;
+  }
+  #chicas-specs {
+    opacity: 0;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  let showingChicasSpecs = false;
+
+  // Scroll animations
+  gsap.from("h2", {
+    scrollTrigger: {
+      trigger: "h2",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    ease: "power2.out",
+  });
+
+  gsap.from("#specs-toggle-button", {
+    scrollTrigger: {
+      trigger: "#specs-toggle-button",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    ease: "power2.out",
+    delay: 0.1,
+  });
+
+  gsap.from("#grandes-specs p", {
+    scrollTrigger: {
+      trigger: "#grandes-specs",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    ease: "power2.out",
+    delay: 0.2,
+  });
+
+  gsap.from("#grandes-specs .grid > div", {
+    scrollTrigger: {
+      trigger: "#grandes-specs .grid",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    },
+    opacity: 0,
+    y: 30,
+    duration: 0.6,
+    ease: "power2.out",
+    stagger: 0.1,
+    delay: 0.4,
+  });
+
+  function toggleSpecs() {
+    const grandesSpecs = document.getElementById("grandes-specs");
+    const chicasSpecs = document.getElementById("chicas-specs");
+    const toggleButton = document.getElementById("specs-toggle-button");
+
+    const tl = gsap.timeline();
+
+    if (showingChicasSpecs) {
+      // Switch to grandes: fade out chicas, fade in grandes
+      tl.to(chicasSpecs, {
+        opacity: 0,
+        y: -50,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+        .set(chicasSpecs, { display: "none" })
+        .set(grandesSpecs, { display: "block", opacity: 0, y: 50 })
+        .to(grandesSpecs, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      if (toggleButton) toggleButton.textContent = "Ver cabañas chicas";
+      showingChicasSpecs = false;
+    } else {
+      // Switch to chicas: fade out grandes, fade in chicas
+      tl.to(grandesSpecs, {
+        opacity: 0,
+        y: -50,
+        duration: 0.5,
+        ease: "power2.out",
+      })
+        .set(grandesSpecs, { display: "none" })
+        .set(chicasSpecs, { display: "block", opacity: 0, y: 50 })
+        .to(chicasSpecs, {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+      if (toggleButton) toggleButton.textContent = "Ver cabañas grandes";
+      showingChicasSpecs = true;
+    }
+  }
+
+  // Make function globally available
+  window.toggleSpecs = toggleSpecs;
+</script>

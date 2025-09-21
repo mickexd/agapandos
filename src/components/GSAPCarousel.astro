@@ -1,0 +1,197 @@
+---
+// GSAPCarousel.astro - Attractive carousel component using GSAP
+export interface Props {
+  images: Array<{ src: string; alt: string }>;
+  type: string;
+}
+
+const { images, type } = Astro.props;
+---
+
+<div
+  class={`carousel-container ${type}-carousel relative w-full overflow-hidden rounded-lg `}
+>
+  <!-- Navigation Arrows -->
+  <button
+    class="carousel-prev absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
+    aria-label="Previous image"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+  <button
+    class="carousel-next absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/20 backdrop-blur-sm text-white p-3 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
+    aria-label="Next image"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  <!-- Images Container -->
+  <div
+    class="carousel-wrapper relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px] overflow-hidden"
+  >
+    <div class="carousel-inner flex">
+      {
+        images.map((image, index) => (
+          <div class="carousel-slide flex-shrink-0 w-full h-full relative group flex justify-center items-center">
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="max-w-full max-h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading={index === 0 ? "eager" : "lazy"}
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <p class="text-lg font-medium italianno-regular">{image.alt}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<style>
+  .carousel-container {
+    background: linear-gradient(
+      135deg,
+      rgba(108, 100, 100, 0.1),
+      rgba(108, 100, 100, 0.05)
+    );
+  }
+
+  .carousel-slide {
+    position: relative;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  class GSAPCarousel {
+    private container: HTMLElement;
+    private type: string;
+    private slides: NodeListOf<HTMLElement>;
+    private inner: HTMLElement;
+    private prevBtn: HTMLButtonElement | null;
+    private nextBtn: HTMLButtonElement | null;
+    private currentIndex: number;
+    private totalSlides: number;
+    private isAnimating: boolean;
+
+    constructor(container: HTMLElement, type: string) {
+      this.container = container;
+      this.type = type;
+      this.slides = container.querySelectorAll(".carousel-slide");
+      this.inner = container.querySelector(".carousel-inner") as HTMLElement;
+      this.prevBtn = container.querySelector(".carousel-prev");
+      this.nextBtn = container.querySelector(".carousel-next");
+      this.currentIndex = 0;
+      this.totalSlides = this.slides.length;
+      this.isAnimating = false;
+
+      this.init();
+    }
+
+    init() {
+      (this.container as any).carouselInstance = this;
+      this.setupEventListeners();
+      this.animateIn();
+      this.startAutoPlay(); // Start auto-play
+    }
+
+    setupEventListeners() {
+      this.prevBtn?.addEventListener("click", () => this.prev());
+      this.nextBtn?.addEventListener("click", () => this.next());
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") this.prev();
+        if (e.key === "ArrowRight") this.next();
+      });
+    }
+
+    animateSlide() {
+      if (this.isAnimating) return;
+      this.isAnimating = true;
+
+      gsap.to(this.inner, {
+        x: `-${this.currentIndex * 100}%`,
+        duration: 0.8,
+        ease: "power2.out",
+        onComplete: () => {
+          this.isAnimating = false;
+        },
+      });
+    }
+
+    next() {
+      this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+      this.animateSlide();
+    }
+
+    prev() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.totalSlides) % this.totalSlides;
+      this.animateSlide();
+    }
+
+    goToSlide(index: number) {
+      this.currentIndex = index;
+      this.animateSlide();
+    }
+
+    animateIn() {
+      gsap.fromTo(
+        this.container,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "power3.out" }
+      );
+    }
+
+    startAutoPlay() {
+      setInterval(() => {
+        if (!this.isAnimating) {
+          this.next();
+        }
+      }, 5000); // Change slide every 5 seconds
+    }
+  }
+
+  // Initialize carousels when DOM is ready
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialize all carousels
+    document.querySelectorAll(".carousel-container").forEach((container) => {
+      const type = container.classList.contains("grandes-carousel")
+        ? "grandes"
+        : "chicas";
+      new GSAPCarousel(container as HTMLElement, type);
+    });
+  });
+
+  // Re-initialize on gallery toggle (from seccion4.astro)
+  document.addEventListener("galleryToggled", () => {
+    setTimeout(() => {
+      document.querySelectorAll(".carousel-container").forEach((container) => {
+        if (!(container as any).carouselInstance) {
+          const type = container.classList.contains("grandes-carousel")
+            ? "grandes"
+            : "chicas";
+          (container as any).carouselInstance = new GSAPCarousel(container as HTMLElement, type);
+        }
+      });
+    }, 100);
+  });
+</script>

@@ -1,21 +1,21 @@
-# System Patterns: Los Agapandos Website
+# System Patterns: Los Agapandos Web Application
 
 ## System Architecture Overview
-The Los Agapandos website is built using Astro, a modern static site builder. Components are developed as `.astro` files, leveraging Astro's island architecture for client-side interactivity. Styling is primarily handled by Tailwind CSS, ensuring a consistent and utility-first approach. Client-side animations are implemented using GSAP and ScrollTrigger.
+- **Frontend**: Astro for static site generation and component-based development.
+- **Styling**: Tailwind CSS (implied by class names in `seccion5.astro` and common Astro setups) or custom CSS.
+- **Interactivity**: Client-side JavaScript for dynamic components, including Pannellum for 360 views.
 
 ## Key Design Patterns in Use
-- **Component-Based Architecture:** The website is structured into reusable Astro components (e.g., `seccion1.astro`, `seccion2.astro`).
-- **Utility-First CSS (Tailwind CSS):** Styling is applied directly in the markup using Tailwind classes, promoting rapid development and consistency.
-- **Client-Side Interactivity (GSAP):** Animations and dynamic behaviors are implemented using GSAP, often triggered by ScrollTrigger for scroll-based effects.
-- **Image Carousel (Swiper.js):** For displaying image galleries, Swiper.js is used with its traditional `div` structure and JavaScript initialization, configured with the "coverflow" effect.
+- **Component-Based Architecture**: Utilizing Astro components for modularity and reusability.
+- **Static Site Generation (SSG)**: Leveraging Astro's capabilities for performance and SEO.
+- **360 Gallery Integration**: Using Pannellum as a client-side library, integrated via a modal overlay and triggered by image clicks. Images are displayed in a CSS grid with hover effects.
 
 ## Component Relationships and Dependencies
-- `src/components/seccion4.astro` depends on Swiper.js (via CDN) for its carousel functionality.
-- All `.astro` components implicitly depend on Tailwind CSS for styling.
-- `seccion1.astro`, `seccion2.astro`, and `seccion3.astro` use GSAP and ScrollTrigger for animations.
+- `src/pages/index.astro` composes various `src/components/*.astro` files and now includes global Pannellum CSS and JS.
+- `src/components/seccion5.astro` now directly handles the display of 360 images in a grid and triggers the Pannellum viewer.
+- `src/components/map.astro` provides an embedded Google Maps component for displaying venue location with GSAP ScrollTrigger curtain animations (top-to-bottom reveal) for title and map.
 
 ## Technical Decisions Rationale
-- **Astro Framework:** Chosen for its performance benefits (minimal client-side JavaScript by default) and developer experience.
-- **Tailwind CSS:** Selected for its utility-first approach, which speeds up UI development and maintains design consistency.
-- **Swiper.js (Traditional Setup):** Opted for the traditional `div` and JavaScript initialization over Web Components due to better control and compatibility within the Astro environment, and to resolve TypeScript issues.
-- **GSAP & ScrollTrigger:** Used for rich, performant animations that enhance user engagement.
+- **Astro**: Chosen for its performance benefits, developer experience, and ability to ship zero JavaScript by default.
+- **Client-side JavaScript**: Used sparingly for interactive elements to maintain performance, specifically for Pannellum and gallery interactions.
+- **Pannellum**: Selected for its lightweight nature and ease of integration for 360 panorama viewing.

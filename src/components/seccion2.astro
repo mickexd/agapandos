@@ -2,9 +2,20 @@
 // No props needed for this component
 ---
 
-<section id="seccion2" class="h-screen bg-[#6c6464] relative">
-  <div class="flex w-auto h-full">
-    <div class="w-1/2 flex justify-end pb-24">
+<section id="nosotros" class="h-screen bg-[#6c6464] relative overflow-hidden">
+  <!-- Mobile background image with blur -->
+  <div class="lg:hidden absolute inset-0 z-0">
+    <img
+      src="/images/seccion2.jpg"
+      alt="Seccion 2 Background"
+      class="w-full h-full object-cover filter blur-xs"
+    />
+    <div class="absolute inset-0 bg-black/30"></div>
+  </div>
+
+  <div class="flex flex-col lg:flex-row w-full h-full relative z-10">
+    <!-- Desktop image - hidden on mobile -->
+    <div class="hidden lg:flex w-1/2 justify-end pb-24">
       <img
         id="seccion2-image"
         src="/images/seccion2.jpg"
@@ -12,39 +23,51 @@
         class="h-[85%] w-auto rounded-xl self-end"
       />
     </div>
-    <div class="w-1/2 flex flex-col justify-end text-white px-12">
-      <h1
-        id="seccion2-h1"
-        class="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl font-bold z-10 text-center w-full shadow-letter font-aguafina text-shadow-md"
+    <div
+      class="w-full lg:w-1/2 flex flex-col justify-end text-white px-4 lg:px-12 pt-8 lg:py-0 overflow-hidden"
+    >
+      <div class="shadow-md">
+        <h1
+          id="seccion2-h1"
+          class="backdrop-blur bg-black/20 text-white text-4xl md:text-6xl font- text-center mb-4 lg:mb-0 lg:absolute md:top-1/5 xl:top-1/5 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 lg:w-1/4 shadow-letter italianno-regular text-shadow-md rounded-2xl"
+        >
+          Un lugar para descansar
+        </h1>
+      </div>
+
+      <div
+        class="flex-1 overflow-y-auto lg:overflow-visible lg:flex lg:flex-col lg:justify-end"
       >
-        Un lugar para descansar
-      </h1>
-      <p id="seccion2-p" class="text-lg self-start pb-24 px-8">
-        Cabañas Los Agapandos representa un concepto arquitectónico innovador
-        que combina sostenibilidad ambiental con el máximo confort. Pioneros en
-        turismo ecológico responsable, nuestras instalaciones aprovechan
-        inteligentemente los recursos naturales, especialmente la energía solar,
-        sin comprometer las comodidades que esperas de un alojamiento de
-        calidad. <br /><br /> Ubicadas en un entorno rústico y preservado, nuestras
-        cabañas han sido diseñadas como un santuario donde podrás desconectarte del
-        estrés urbano y reconectarte contigo mismo. Cada espacio está cuidadosamente
-        pensado para ofrecerte momentos de relajación genuina y renovación personal.
-        <br /><br /> Hemos aprovechado y respetado las bondades de los recursos naturales,
-        principalmente el sol, sin descuidar las comodidades de un alojamiento normal,
-        lo que hacen de nuestros espacios un lugar ideoneo para el relajamiento,
-        reconección y reposo del bullicio y estres propio de la ciudad. <br />
-        <br />
-        <span class="font-bold">Para los adultos:</span> Disfruta de áreas exclusivas
-        perfectas para reuniones íntimas con amigos, cenas al aire libre y momentos
-        de convivencia con una copa de vino bajo las estrellas. <br /><span
-          class="font-bold">Para los más pequeños:</span
-        > Más de 3,000 metros cuadrados de jardines seguros donde los niños pueden
-        explorar, jugar y crear recuerdos inolvidables en contacto directo con la
-        naturaleza. <br />
-        <span class="font-bold">Para toda la familia:</span> Amplias terrazas que
-        invitan a la convivencia, ideales para compartir historias, contemplar el
-        paisaje y crear vínculos duraderos.
-      </p>
+        <p
+          id="seccion2-p"
+          class="text-xs md:text-[12px] lg:text-[16px] self-start pb-4 lg:pb-24 px-1 sm:px-2 lg:px-8 leading-relaxed shadow-lg lg:shadow-none text-left"
+        >
+          Cabañas Los Agapandos representa un concepto arquitectónico innovador
+          que combina sostenibilidad ambiental con el máximo confort. Pioneros
+          en turismo ecológico responsable, nuestras instalaciones aprovechan
+          inteligentemente los recursos naturales, especialmente la energía
+          solar, sin comprometer las comodidades que esperas de un alojamiento
+          de calidad. <br /><br /> Ubicadas en un entorno rústico y preservado, nuestras
+          cabañas han sido diseñadas como un santuario donde podrás desconectarte
+          del estrés urbano y reconectarte contigo mismo. Cada espacio está cuidadosamente
+          pensado para ofrecerte momentos de relajación genuina y renovación personal.
+          <br /><br /> Hemos aprovechado y respetado las bondades de los recursos
+          naturales, principalmente el sol, sin descuidar las comodidades de un alojamiento
+          normal, lo que hacen de nuestros espacios un lugar ideoneo para el relajamiento,
+          reconección y reposo del bullicio y estres propio de la ciudad. <br />
+          <br />
+          <span class="font-bold">Para los adultos:</span> Disfruta de áreas exclusivas
+          perfectas para reuniones íntimas con amigos, cenas al aire libre y momentos
+          de convivencia con una copa de vino bajo las estrellas. <br /><span
+            class="font-bold">Para los más pequeños:</span
+          > Más de 3,000 metros cuadrados de jardines seguros donde los niños pueden
+          explorar, jugar y crear recuerdos inolvidables en contacto directo con
+          la naturaleza. <br />
+          <span class="font-bold">Para toda la familia:</span> Amplias terrazas que
+          invitan a la convivencia, ideales para compartir historias, contemplar
+          el paisaje y crear vínculos duraderos.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -55,7 +78,7 @@
     gsap.registerPlugin(ScrollTrigger);
 
     function initScrollAnimations() {
-      const section = document.querySelector("#seccion2");
+      const section = document.querySelector("#nosotros");
       const h1 = document.getElementById("seccion2-h1");
       const p = document.getElementById("seccion2-p");
       const img = document.getElementById("seccion2-image");

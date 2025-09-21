@@ -1,0 +1,45 @@
+---
+const images360 = [
+  "/images/360/360-1.jpg",
+  "/images/360/360-2.jpg",
+  "/images/360/360-3.jpg",
+];
+---
+
+<section class="w-full py-16 flex flex-col" id="galeria360">
+  <h2
+    class="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 sm:mb-6 italianno-regular text-shadow-md px-4"
+  >
+    Galería 360
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mt-8 px-2 sm:px-4 lg:px-6 xl:px-8">
+    {
+      images360.map((image) => (
+        <div
+          class="relative overflow-hidden rounded-lg shadow-lg cursor-pointer group transition-transform duration-300 hover:scale-105"
+          onclick={`
+             document.getElementById('pannellum-modal').classList.remove('hidden');
+             pannellum.viewer('pannellum-viewer', {
+               "type": "equirectangular",
+               "panorama": "${image}",
+               "autoLoad": true
+             });
+           `}
+        >
+          <img
+            src={image}
+            alt="360 Gallery Image"
+            class="w-full h-56 sm:h-64 lg:h-72 xl:h-80 object-cover transition-transform duration-500 group-hover:scale-125"
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById("pannellum-close").addEventListener("click", () => {
+    document.getElementById("pannellum-modal").classList.add("hidden");
+  });
+</script>

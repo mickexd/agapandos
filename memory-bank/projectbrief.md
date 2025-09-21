@@ -1,19 +1,18 @@
-# Project Brief: Los Agapandos Website
+# Project Brief: Los Agapandos Web Application
 
 ## Project Scope and Core Requirements
-This project involves developing and maintaining the "Los Agapandos" website, a platform showcasing cabañas (cabins) for rent, emphasizing nature, harmony, and relaxation. The website aims to provide an attractive and informative user experience, highlighting the unique architectural concept, sustainable practices, and various services and experiences offered.
+This project aims to develop a modern, responsive web application for "Los Agapandos," a hospitality or event venue. The application will showcase the venue's features, amenities, and provide an immersive user experience, including a 360-degree gallery.
 
 ## Business Objectives and Success Criteria
-- **Objective:** Increase online visibility and bookings for Los Agapandos cabañas.
-- **Success Criteria:**
-    - High user engagement with photo galleries and service descriptions.
-    - Positive feedback on website aesthetics and usability.
-    - Increased direct bookings through the website.
+- **Objective**: Increase online presence and engagement for Los Agapandos.
+- **Objective**: Provide potential clients with a comprehensive and visually appealing overview of the venue.
+- **Success Criteria**: High user engagement with the gallery and other interactive elements.
+- **Success Criteria**: Positive feedback on the website's aesthetics and usability.
 
 ## Key Stakeholders and Constraints
-- **Stakeholders:** Los Agapandos management, potential guests.
-- **Constraints:**
-    - Adherence to existing design patterns, fonts (Aguafina, Poppins), and color schemes.
-    - Use of Tailwind CSS for styling.
-    - Integration of Swiper.js for image carousels.
-    - Compatibility with Astro framework.
+- **Stakeholders**: Los Agapandos management, marketing team, potential clients.
+- **Constraints**:
+    - Must be responsive across various devices.
+    - Performance optimized for fast loading times.
+    - Use existing image assets located in `public/images/`.
+    - Maintain a consistent brand image.

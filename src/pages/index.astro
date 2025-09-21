@@ -5,14 +5,82 @@ import Seccion1 from "../components/seccion1.astro";
 import Seccion2 from "../components/seccion2.astro";
 import Seccion3 from "../components/seccion3.astro";
 import Seccion4 from "../components/seccion4.astro";
+import Specs from "../components/specs.astro";
+import Seccion5 from "../components/seccion5.astro";
+import Seccion6 from "../components/seccion6.astro";
+import Map from "../components/map.astro";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/footer.astro";
 ---
 
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>
+      Cabañas Los Agapandos - Renta de Cabañas con Vista 360° | Cabin Rentals
+      with 360° Views
+    </title>
+    <meta
+      name="description"
+      content="Renta cabañas acogedoras en Los Agapandos con energía solar, agua caliente 24h y más de 4,000 m² de jardín. Experiencia única con vistas panorámicas 360°. | Rent cozy cabins at Los Agapandos with solar energy, 24h hot water and over 4,000 m² of garden. Unique experience with 360° panoramic views."
+    />
+    <meta
+      name="keywords"
+      content="cabañas renta, cabañas mexico, hospedaje cabañas, renta vacacional, cabañas familiares, turismo rural, energía solar, vista 360, cabin rental, vacation rental, family cabins, rural tourism, solar energy, 360 view, eco cabins, nature retreat"
+    />
+    <meta name="author" content="Cabañas Los Agapandos" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish, English" />
+    <meta name="geo.region" content="MX" />
+    <meta name="geo.placename" content="México" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.losagapandostapalpa.com/" />
+    <meta
+      property="og:title"
+      content="Cabañas Los Agapandos - Renta de Cabañas Ecológicas | Eco Cabin Rentals"
+    />
+    <meta
+      property="og:description"
+      content="Disfruta de cabañas con energía solar, agua caliente 24h y más de 4,000 m² de jardín. Vista panorámica 360°. | Enjoy cabins with solar energy, 24h hot water and over 4,000 m² of garden. 360° panoramic views."
+    />
+    <meta
+      property="og:image"
+      content="https://www.losagapandostapalpa.com/images/agapandos-aereo.jpg"
+    />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://www.losagapandostapalpa.com/"
+    />
+    <meta
+      property="twitter:title"
+      content="Cabañas Los Agapandos - Renta de Cabañas Ecológicas"
+    />
+    <meta
+      property="twitter:description"
+      content="Cabañas con energía solar, agua caliente 24h y jardín de 4,000 m². Vista 360°."
+    />
+    <meta
+      property="twitter:image"
+      content="https://www.losagapandostapalpa.com/images/agapandos-aereo.jpg"
+    />
+
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://www.losagapandostapalpa.com/" />
+    <meta name="theme-color" content="#6c6464" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,20 +88,107 @@ import Seccion4 from "../components/seccion4.astro";
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Aguafina+Script&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
       rel="stylesheet"
     />
-    <title>Cabañas Los Agapandos</title>
+
+    <!-- Pannellum 360 Viewer -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css"
+    />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Cabañas Los Agapandos",
+        "description": "Renta de cabañas ecológicas con energía solar, agua caliente 24 horas y amplios jardines. Experiencia única de hospedaje rural.",
+        "url": "https://www.losagapandostapalpa.com",
+        "telephone": "+52-xxx-xxx-xxxx",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "MX",
+          "addressLocality": "México"
+        },
+        "geo": {
+          "@type": "GeoCoordinates"
+        },
+        "amenityFeature": [
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Energía Solar",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Agua Caliente 24h",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Jardín 4000m²",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Juegos Infantiles",
+            "value": true
+          },
+          {
+            "@type": "LocationFeatureSpecification",
+            "name": "Cancha Multiusos",
+            "value": true
+          }
+        ],
+        "image": [
+          "https://www.losagapandostapalpa.com/images/agapandos-aereo.jpg",
+          "https://www.losagapandostapalpa.com/images/chicas/chica.jpg",
+          "https://www.losagapandostapalpa.com/images/grandes/grande.jpg"
+        ],
+        "priceRange": "$$$",
+        "starRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        }
+      }
+    </script>
   </head>
   <body class="font-poppins bg-[#6c6464]">
     <Intro />
 
+    <!-- Pannellum Viewer Modal -->
+    <div
+      id="pannellum-modal"
+      class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[10002] hidden"
+    >
+      <div class="relative w-full h-full max-w-screen-xl max-h-screen-xl">
+        <div id="pannellum-viewer" class="w-full h-full"></div>
+        <button
+          id="pannellum-close"
+          class="absolute top-4 right-4 text-white text-3xl font-bold cursor-pointer"
+        >
+          &times;
+        </button>
+      </div>
+    </div>
+
     <!-- Main content (hidden behind loading screen initially) -->
     <main class="min-h-screen">
+      <NavBar />
       <Seccion1 />
       <Seccion2 />
       <Seccion3 />
       <Seccion4 />
+      <Specs />
+      <Seccion5 />
+      <Seccion6 />
+      <Map />
+      <Footer />
     </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"
+      is:inline></script>
   </body>
 </html>

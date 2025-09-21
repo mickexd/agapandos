@@ -11,9 +11,10 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* Custom font for Aguafina Script */
-.font-aguafina {
-  font-family: 'Aguafina Script', cursive;
+.italianno-regular {
+  font-family: "Italianno", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .font-montserrat {

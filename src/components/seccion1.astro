@@ -3,7 +3,7 @@ import AnimatedButton from "../animated-button/animated-button.jsx";
 ---
 
 <!-- Hero Section with Video Background -->
-<section class="relative w-full h-screen overflow-hidden">
+<section class="relative w-full h-screen overflow-x-visible overflow-y-hidden">
   <!-- Video Background -->
   <video
     id="hero-video"
@@ -20,18 +20,25 @@ import AnimatedButton from "../animated-button/animated-button.jsx";
 
   <!-- Animated Text Container -->
   <div
-    class="relative z-20 flex flex-col items-center justify-center w-full h-full"
+    class="relative z-20 flex flex-col items-center justify-center w-full h-full overflow-visible px-auto md:px-12 text-balance"
   >
-    <h1
-      id="hero-text"
-      class="text-white text-4xl md:text-5xl lg:text-6xl font-light text-center max-w-5xl px-4 leading-tight pb-12 font-aguafina italic text-shadow-md"
-    >
-      <span class="block"
-        >Naturaleza, armonía y descanso para toda la familia en la sierra de</span
+    <div class="w-full overflow-visible">
+      <h1
+        id="hero-text"
+        class="invisible text-white text-4xl md:text-6xl font-normal text-center w-full mx-auto leading-relaxed pb-8 md:pb-12 italianno-regular italic text-shadow-md"
       >
-      <span class="block">Tapalpa</span>
-    </h1>
-    <AnimatedButton label="Reservar" route="/studio" animateOnScroll={false} />
+        <span class="block"
+          >Naturaleza, armonía y descanso para toda la familia en la sierra de</span
+        >
+
+        <span class="block">Tapalpa</span>
+      </h1>
+    </div>
+    <AnimatedButton
+      label="Reservar"
+      route="/reservar"
+      animateOnScroll={false}
+    />
   </div>
 </section>
 
@@ -73,6 +80,9 @@ import AnimatedButton from "../animated-button/animated-button.jsx";
   function startHeroAnimation() {
     const heroText = document.getElementById("hero-text") as HTMLElement;
     if (!heroText) return;
+
+    // Make text visible by removing invisible class
+    heroText.classList.remove("invisible");
 
     // Split text into characters
     const chars = splitTextIntoChars(heroText);
@@ -123,10 +133,3 @@ import AnimatedButton from "../animated-button/animated-button.jsx";
     checkLoadingScreen();
   });
 </script>
-
-<style>
-  /* Ensure proper overflow handling for the animation */
-  #hero-text {
-    visibility: hidden;
-  }
-</style>

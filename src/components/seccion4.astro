@@ -1,139 +1,183 @@
 ---
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+import "../animated-button/animated-button.css";
+import GSAPCarousel from "./GSAPCarousel.astro";
+
+// Images for Cabañas Grandes
+const grandesImages = [
+  { src: "/images/grandes/grande.jpg", alt: "Cabaña Grande" },
+  {
+    src: "/images/grandes/Recamara cama King.jpg",
+    alt: "Recámara con cama King",
+  },
+  {
+    src: "/images/grandes/Habitacion cama Queen.jpg",
+    alt: "Habitación con cama Queen",
+  },
+  {
+    src: "/images/grandes/Habitacion cama Queen_2.jpg",
+    alt: "Habitación Queen vista 2",
+  },
+  {
+    src: "/images/grandes/Recamara 6 camas.jpg",
+    alt: "Recámara con 6 camas individuales",
+  },
+  {
+    src: "/images/grandes/Recamara 6 cama.jpg",
+    alt: "Recámara 6 camas vista 2",
+  },
+  { src: "/images/grandes/Cocina Comedor.jpg", alt: "Cocina comedor" },
+  {
+    src: "/images/grandes/Cocina Comedor_2.jpg",
+    alt: "Cocina comedor vista 2",
+  },
+  {
+    src: "/images/grandes/Estancia con chimenea.jpg",
+    alt: "Estancia con chimenea",
+  },
+  {
+    src: "/images/grandes/Estancia con chimenea_2.jpg",
+    alt: "Estancia chimenea vista 2",
+  },
+  {
+    src: "/images/grandes/Estancia con chimena_v2.JPG",
+    alt: "Estancia chimenea vista 3",
+  },
+  { src: "/images/grandes/Estancia.jpg", alt: "Estancia" },
+  { src: "/images/grandes/chimenea.jpg", alt: "Chimenea" },
+  { src: "/images/grandes/king.jpg", alt: "Cama King" },
+  { src: "/images/grandes/queen.jpg", alt: "Cama Queen" },
+];
+
+// Images for Cabañas Chicas
+const chicasImages = [
+  { src: "/images/chicas/chica.jpg", alt: "Cabaña Chica" },
+  {
+    src: "/images/chicas/Recamara cama Queen.jpg",
+    alt: "Recámara con cama Queen",
+  },
+  {
+    src: "/images/chicas/Recamara cama Queen_v2.jpg",
+    alt: "Recámara Queen vista 2",
+  },
+  {
+    src: "/images/chicas/Recamara cama Queen_v3.JPG",
+    alt: "Recámara Queen vista 3",
+  },
+
+  {
+    src: "/images/chicas/Recamara individual y litera_v2.jpg",
+    alt: "Recámara individual y litera vista 2",
+  },
+  { src: "/images/chicas/camas.jpg", alt: "Camas" },
+  { src: "/images/chicas/Baño.jpg", alt: "Baño" },
+  { src: "/images/chicas/cocina.jpg", alt: "Cocina" },
+  { src: "/images/chicas/Comedor.png", alt: "Comedor" },
+  {
+    src: "/images/chicas/Estancia con chimenea.jpg",
+    alt: "Estancia con chimenea",
+  },
+  { src: "/images/chicas/Estancia con chimena.jpg", alt: "Estancia chimenea" },
+  { src: "/images/chicas/Chimenea.jpg", alt: "Chimenea" },
+  { src: "/images/chicas/estancia.jpg", alt: "Estancia" },
+];
 ---
 
-<style>
-  /* Custom styles to override Swiper defaults and match theme */
-  .swiper {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
+<section class="relative w-full min-h-screen md:px-8 pb-8 pt-8">
+  <div class="flex flex-col items-center w-full max-w-none pt-8">
+    <h1
+      class="text-4xl md:text-6xl text-white italianno-regular text-center mb-8"
+    >
+      Galeria
+    </h1>
+    <div class="text-center mb-8">
+      <button
+        onclick="toggleGallery()"
+        class="bg-white text-black px-4 py-2 text-base md:px-6 md:py-3 md:text-lg rounded-full hover:bg-gray-200 transition-colors duration-300 font-medium"
+        id="toggle-button-text"
+      >
+        Ver cabañas chicas
+      </button>
+    </div>
 
-  .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 500px; /* Increased width for bigger gallery */
-    height: 400px; /* Increased height for bigger gallery */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-  }
-
-  /* Custom styling for navigation arrows */
-  .swiper-button-next,
-  .swiper-button-prev {
-    color: #fff !important; /* White arrows */
-  }
-
-  /* Custom styling for pagination bullets */
-  .swiper-pagination-bullet {
-    background-color: #fff !important; /* White bullets */
-    opacity: 0.8;
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: #fff !important; /* Active bullet remains white */
-    opacity: 1;
-  }
-</style>
-
-<section
-  class="relative w-full h-screen overflow-hidden bg-[#6c6464] flex flex-col items-center justify-center py-4"
->
-  <h2
-    class="text-white text-6xl font-bold text-center mb-6 font-aguafina text-shadow-md"
-  >
-    Galería
-  </h2>
-  <!-- Swiper -->
-  <div class="swiper mySwiper w-full max-w-7xl h-[600px] rounded-xl">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="/images/chicas/camas.jpg" alt="Camas" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/chicas/chica.jpg" alt="Chica" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/chicas/cocina.jpg" alt="Cocina" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/chicas/estancia.jpg" alt="Estancia" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/chicas/recamara.jpg" alt="Recamara" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/grandes/chimenea.jpg" alt="Chimenea" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/grandes/cocina.jpg" alt="Cocina" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/grandes/grande.jpg" alt="Grande" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/grandes/king.jpg" alt="King" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/grandes/queen.jpg" alt="Queen" />
-      </div>
-      <div class="swiper-slide">
-        <img src="/images/agapandos-aereo.jpg" alt="Vista aérea de Los Agapandos" />
+    <div id="grandes-gallery" class="gallery-section w-full">
+      <p
+        class="text-white text-center text-4xl md:text-6xl mb-4 italianno-regular"
+      >
+        Cabañas Grandes
+      </p>
+      <div class="bg-transparent w-full py-4">
+        <GSAPCarousel images={grandesImages} type="grandes" />
       </div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-    <!-- Add Navigation -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+
+    <!-- -------------------------------------------------------------------------------- -->
+
+    <div id="chicas-gallery" class="gallery-section hidden w-full">
+      <p
+        class="text-white text-center text-4xl md:text-6xl mb-4 italianno-regular"
+      >
+        Cabañas Chicas
+      </p>
+      <div class="bg-transparent w-full py-4">
+        <GSAPCarousel images={chicasImages} type="chicas" />
+      </div>
+    </div>
   </div>
 </section>
 
-<script>
-  import { Swiper } from "swiper";
-  import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+<style>
+  .hidden {
+    display: none;
+  }
+  .gallery-section {
+    width: 100%;
+    min-height: fit-content;
+    overflow: visible;
+  }
+  #grandes-gallery {
+    opacity: 1;
+  }
+  #chicas-gallery {
+    opacity: 0;
+  }
+</style>
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const swiper = new Swiper(".mySwiper", {
-      modules: [EffectCoverflow, Pagination, Navigation],
-      effect: "coverflow",
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: "auto",
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
+<script>
+  import { gsap } from "gsap";
+
+  let showingChicas = false;
+
+  function toggleGallery() {
+    const grandesGallery = document.getElementById("grandes-gallery");
+    const chicasGallery = document.getElementById("chicas-gallery");
+    const toggleButton = document.getElementById("toggle-button-text");
+
+    const tl = gsap.timeline();
+
+    if (showingChicas) {
+      // Switch to grandes: fade out chicas, fade in grandes
+      tl.to(chicasGallery, { opacity: 0, duration: 0.5, ease: "power2.out" })
+        .set(chicasGallery, { display: "none" })
+        .set(grandesGallery, { display: "block", opacity: 0 })
+        .to(grandesGallery, { opacity: 1, duration: 0.5, ease: "power2.out" });
+      if (toggleButton) toggleButton.textContent = "Ver cabañas chicas";
+      showingChicas = false;
+    } else {
+      // Switch to chicas: fade out grandes, fade in chicas
+      tl.to(grandesGallery, { opacity: 0, duration: 0.5, ease: "power2.out" })
+        .set(grandesGallery, { display: "none" })
+        .set(chicasGallery, { display: "block", opacity: 0 })
+        .to(chicasGallery, { opacity: 1, duration: 0.5, ease: "power2.out" });
+      if (toggleButton) toggleButton.textContent = "Ver cabañas grandes";
+      showingChicas = true;
+    }
+
+    // Trigger gallery re-initialization for smooth animations
+    tl.call(() => {
+      document.dispatchEvent(new CustomEvent("galleryToggled"));
     });
-  });
+  }
+
+  // Make function globally available
+  window.toggleGallery = toggleGallery;
 </script>

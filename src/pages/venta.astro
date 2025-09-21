@@ -1,0 +1,470 @@
+---
+import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+import Footer from "../components/footer.astro";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>Venta de Lotes - Cabañas Los Agapandos</title>
+    <meta
+      name="description"
+      content="Información sobre la venta de lotes en Los Agapandos. Oportunidades de inversión en un entorno natural único."
+    />
+    <meta
+      name="keywords"
+      content="venta lotes, inversión terrenos, propiedad rural, Los Agapandos"
+    />
+    <meta name="author" content="Cabañas Los Agapandos" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="font-poppins bg-[#6c6464]">
+    <main class="min-h-screen overflow-x-hidden">
+      <NavBar />
+      <section class="py-10 sm:py-20 px-1 sm:px-4 text-white">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-16 animate-section">
+            <h1
+              class="text-5xl s md:text-6xl lg:text-7xl font-bold mb-8 italianno-regular animate-text-left pt-12"
+            >
+              Venta de Lotes
+            </h1>
+            <p class="text-lg md:text-xl animate-text-right">
+              Descubre oportunidades únicas de inversión en Los Agapandos.
+            </p>
+          </div>
+
+          <!-- Featured Lote -->
+          <div
+            class="bg-white/10 p-2 sm:p-4 sm:p-6 md:p-8 rounded-lg mb-12 animate-section"
+          >
+            <div class="text-center mb-8">
+              <h2
+                class="text-2xl sm:text-2xl sm:text-3xl md:text-4xl font-bold mb-4 animate-text-left"
+              >
+                Lote 77-L
+              </h2>
+              <p class="text-xl text-gray-200 animate-text-left">
+                3era Sección
+              </p>
+            </div>
+
+            <div
+              class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:gap-4 sm:p-6 md:gap-4 sm:p-4 sm:p-6 md:p-8 mb-8"
+            >
+              <div class="flex justify-center">
+                <img
+                  src="/images/grandes/grande.jpg"
+                  alt="Casa Grande en Lote 77-L"
+                  class="w-full max-w-full sm:max-w-md h-auto rounded-lg shadow-lg object-cover animate-image"
+                />
+              </div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Especificaciones del Terreno
+                </h3>
+                <ul class="space-y-3 text-base sm:text-lg mb-6 animate-text-right">
+                  <li>
+                    <span class="font-medium">Superficie total:</span> 1,380.37 m²
+                  </li>
+                  <li><span class="font-medium">G1:</span> 262.25 m²</li>
+                  <li><span class="font-medium">G2:</span> 262.25 m²</li>
+                </ul>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Características
+                </h3>
+                <p class="text-base sm:text-lg animate-text-right">
+                  2 Casas de campo grandes<br />Ideales para negocio y descanso
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-2 sm:p-4 rounded-lg">
+              <h3 class="text-xl sm:text-2xl font-semibold mb-4">
+                Características Generales de las Casas
+              </h3>
+              <div class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:p-6">
+                <ul class="space-y-2 text-base sm:text-lg">
+                  <li>• Capacidad: 10 personas</li>
+                  <li>• 2 Plantas</li>
+                  <li>• 3 Recámaras</li>
+                  <li>• 3 Baños completos</li>
+                </ul>
+                <ul class="space-y-2 text-base sm:text-lg">
+                  <li>• Cocina comedor</li>
+                  <li>• Estancia con chimenea</li>
+                  <li>• Asador independiente</li>
+                  <li>• Cochera independiente</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second Featured Lote -->
+          <div
+            class="bg-white/10 p-2 sm:p-4 sm:p-6 md:p-8 rounded-lg mb-12 animate-section"
+          >
+            <div class="text-center mb-8">
+              <h2
+                class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 animate-text-left"
+              >
+                Lote 77-K
+              </h2>
+              <p class="text-xl text-gray-200 animate-text-left">
+                3era Sección
+              </p>
+            </div>
+
+            <div
+              class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:gap-4 sm:p-6 md:gap-4 sm:p-4 sm:p-6 md:p-8 mb-8"
+            >
+              <div>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Especificaciones del Terreno
+                </h3>
+                <ul class="space-y-3 text-base sm:text-lg mb-6 animate-text-right">
+                  <li>
+                    <span class="font-medium">Superficie total:</span> 1,501.47 m²
+                  </li>
+                  <li><span class="font-medium">C1:</span> 140.78 m²</li>
+                  <li><span class="font-medium">C2:</span> 140.78 m²</li>
+                </ul>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Características
+                </h3>
+                <p class="text-base sm:text-lg animate-text-right">
+                  2 Casas de campo chicas<br />Ideales para negocio y descanso
+                </p>
+              </div>
+              <div class="flex justify-center">
+                <img
+                  src="/images/chicas/chica.jpg"
+                  alt="Casa Chica en Lote 77-K"
+                  class="w-full max-w-full sm:max-w-md h-auto rounded-lg shadow-lg object-cover animate-image"
+                />
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-2 sm:p-4 rounded-lg">
+              <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-left">
+                Características Generales de las Casas
+              </h3>
+              <div
+                class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:p-6 animate-text-left"
+              >
+                <ul class="space-y-2 text-base sm:text-lg">
+                  <li>• Capacidad: 6 personas</li>
+                  <li>• 1 Planta</li>
+                  <li>• 2 Recámaras</li>
+                  <li>• 2 Baños completos</li>
+                </ul>
+                <ul class="space-y-2 text-base sm:text-lg">
+                  <li>• Cocina comedor</li>
+                  <li>• Estancia con chimenea</li>
+                  <li>• Asador independiente</li>
+                  <li>• Cochera independiente</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Third Featured Lote -->
+          <div
+            class="bg-white/10 p-2 sm:p-4 sm:p-6 md:p-8 rounded-lg mb-12 animate-section"
+          >
+            <div class="text-center mb-8">
+              <h2
+                class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 animate-text-left"
+              >
+                Lote 77-J
+              </h2>
+              <p class="text-xl text-gray-200 animate-text-left">
+                3era Sección
+              </p>
+            </div>
+
+            <div
+              class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:gap-4 sm:p-6 md:gap-4 sm:p-4 sm:p-6 md:p-8 mb-8"
+            >
+              <div class="flex justify-center">
+                <img
+                  src="/images/agapandos-aereo.jpg"
+                  alt="Vista Aérea de Los Agapandos - Lote 77-J"
+                  class="w-full max-w-full sm:max-w-md h-auto rounded-lg shadow-lg object-cover animate-image"
+                />
+              </div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Especificaciones del Terreno
+                </h3>
+                <ul class="space-y-3 text-base sm:text-lg mb-6 animate-text-right">
+                  <li>
+                    <span class="font-medium">Superficie total:</span> 1,502.19 m²
+                  </li>
+                  <li><span class="font-medium">G3:</span> 262.25 m²</li>
+                  <li><span class="font-medium">C3:</span> 140.78 m²</li>
+                </ul>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Características
+                </h3>
+                <p class="text-base sm:text-lg animate-text-right">
+                  1 Casa de campo grande y 1 Casa de campo chica<br />Ideales
+                  para negocio y descanso
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-2 sm:p-4 rounded-lg">
+              <div
+                class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:gap-4 sm:p-6 md:gap-4 sm:p-4 sm:p-6 md:p-8 animate-text-left"
+              >
+                <div>
+                  <h3 class="text-xl font-semibold mb-4 animate-text-left">
+                    Casa Grande
+                  </h3>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <ul class="space-y-2 text-base sm:text-lg">
+                      <li>• Capacidad: 10 personas</li>
+                      <li>• 2 Plantas</li>
+                      <li>• 3 Recámaras</li>
+                      <li>• 3 Baños completos</li>
+                    </ul>
+                    <ul class="space-y-2 text-base sm:text-lg">
+                      <li>• Cocina comedor</li>
+                      <li>• Estancia con chimenea</li>
+                      <li>• Asador independiente</li>
+                      <li>• Cochera independiente</li>
+                    </ul>
+                  </div>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold mb-4 animate-text-left">
+                    Casa Chica
+                  </h3>
+                  <div class="grid md:grid-cols-2 gap-4">
+                    <ul class="space-y-2 text-base sm:text-lg">
+                      <li>• Capacidad: 6 personas</li>
+                      <li>• 1 Planta</li>
+                      <li>• 2 Recámaras</li>
+                      <li>• 2 Baños completos</li>
+                    </ul>
+                    <ul class="space-y-2 text-base sm:text-lg">
+                      <li>• Cocina comedor</li>
+                      <li>• Estancia con chimenea</li>
+                      <li>• Asador independiente</li>
+                      <li>• Cochera independiente</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fourth Featured Lote -->
+          <div
+            class="bg-white/10 p-2 sm:p-4 sm:p-6 md:p-8 rounded-lg mb-12 animate-section"
+          >
+            <div class="text-center mb-8">
+              <h2
+                class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 animate-text-left"
+              >
+                Lote 77-I
+              </h2>
+              <p class="text-xl text-gray-200 animate-text-left">
+                3era Sección
+              </p>
+            </div>
+
+            <div
+              class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:gap-4 sm:p-6 md:gap-4 sm:p-4 sm:p-6 md:p-8 mb-8"
+            >
+              <div>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Especificaciones del Terreno
+                </h3>
+                <ul class="space-y-3 text-base sm:text-lg mb-6 animate-text-right">
+                  <li>
+                    <span class="font-medium">Superficie total:</span> 1,514.72 m²
+                  </li>
+                </ul>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Características
+                </h3>
+                <p class="text-base sm:text-lg animate-text-right">
+                  1 Terreno con instalaciones recreativas
+                </p>
+              </div>
+              <div class="flex justify-center">
+                <img
+                  src="/images/Lote_77_I.jpg"
+                  alt="Lote 77-I - Terreno con Instalaciones"
+                  class="w-full max-w-full sm:max-w-md h-auto rounded-lg shadow-lg object-cover animate-image"
+                />
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-2 sm:p-4 rounded-lg">
+              <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-left">
+                Características Generales
+              </h3>
+              <ul class="space-y-2 text-base sm:text-lg animate-text-left">
+                <li>• Rampa de acceso con puerta</li>
+                <li>• Kiosco</li>
+                <li>• Juegos infantiles</li>
+                <li>• Muro de contención</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Fifth Featured Lote -->
+          <div
+            class="bg-white/10 p-2 sm:p-4 sm:p-6 md:p-8 rounded-lg mb-12 animate-section"
+          >
+            <div class="text-center mb-8">
+              <h2
+                class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 animate-text-left"
+              >
+                Lote 77-H
+              </h2>
+              <p class="text-xl text-gray-200 animate-text-left">
+                3era Sección
+              </p>
+            </div>
+
+            <div
+              class="grid md:grid-cols-2 gap-4 sm:gap-4 sm:gap-4 sm:p-6 md:gap-4 sm:p-4 sm:p-6 md:p-8 mb-8"
+            >
+              <div class="flex justify-center">
+                <img
+                  src="/images/Lote_77_H.jpg"
+                  alt="Lote 77-H - Terreno con Área de Usos Múltiples"
+                  class="w-full max-w-full sm:max-w-md h-auto rounded-lg shadow-lg object-cover animate-image"
+                />
+              </div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Especificaciones del Terreno
+                </h3>
+                <ul class="space-y-3 text-base sm:text-lg mb-6 animate-text-right">
+                  <li>
+                    <span class="font-medium">Superficie total:</span> 1,506.09 m²
+                  </li>
+                </ul>
+                <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                  Características
+                </h3>
+                <p class="text-base sm:text-lg animate-text-right">
+                  1 Terreno con área de usos múltiples
+                </p>
+              </div>
+            </div>
+
+            <div class="bg-white/5 p-2 sm:p-4 rounded-lg">
+              <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-left">
+                Características Generales
+              </h3>
+              <ul class="space-y-2 text-base sm:text-lg animate-text-left">
+                <li>• Área de usos múltiples</li>
+                <li>• 1 Banca de piedra</li>
+                <li>• 1 Fogatero</li>
+                <li>• Muro de contención</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- General Info and Contact -->
+          <div class="grid md:grid-cols-2 gap-2 sm:gap-4 animate-section">
+            <div class="bg-white/10 p-2 sm:p-4 rounded-lg">
+              <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-left">
+                Características Generales
+              </h3>
+              <ul class="text-left space-y-2 text-base sm:text-lg animate-text-left">
+                <li>• Ubicación privilegiada en Tapalpa, Jalisco</li>
+                <li>• Entorno natural con vistas panorámicas</li>
+                <li>• Acceso a servicios básicos</li>
+                <li>• Oportunidades de desarrollo sostenible</li>
+              </ul>
+            </div>
+            <div class="bg-white/10 p-2 sm:p-4 rounded-lg">
+              <h3 class="text-xl sm:text-2xl font-semibold mb-4 animate-text-right">
+                Contacto
+              </h3>
+              <p class="text-base sm:text-lg mb-4 animate-text-right">
+                Para más información sobre este lote o lotes disponibles:
+              </p>
+              <p
+                class="text-base sm:text-lg mb-2 animate-text-right break-words"
+              >
+                Teléfono: +52 33 1848 5469
+              </p>
+              <p
+                class="text-base sm:text-lg mb-2 animate-text-right break-words"
+              >
+                Email: reservaciones@losagapandostapalpa.com
+              </p>
+              <p class="text-base sm:text-base sm:text-lg animate-text-right break-words">
+                losagapandostapalpa@gmail.com
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </main>
+    <script>
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      document.querySelectorAll(".animate-section").forEach((section) => {
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        tl.set(section, { opacity: 0, y: 50 })
+          .to(section, { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" })
+          .fromTo(
+            section.querySelectorAll(".animate-text-left"),
+            { x: -50, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.6, stagger: 0.1 },
+            "-=0.4"
+          )
+          .fromTo(
+            section.querySelectorAll(".animate-text-right"),
+            { x: 50, opacity: 0 },
+            { x: 0, opacity: 1, duration: 0.6, stagger: 0.1 },
+            "-=0.4"
+          )
+          .fromTo(
+            section.querySelectorAll(".animate-image"),
+            { scale: 0.8, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.7)" },
+            "-=0.4"
+          );
+      });
+    </script>
+  </body>
+</html>

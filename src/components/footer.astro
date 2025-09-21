@@ -1,0 +1,93 @@
+---
+import TerminosCondiciones from './terminos-condiciones.astro';
+import AvisoPrivacidad from './aviso-privacidad.astro';
+---
+
+<footer class="bg-[#656378] py-8 shadow-xl shadow-top">
+ <div class="container mx-auto px-4 flex flex-col items-center">
+   <a href="/">
+     <img
+       src="/images/logo-white.png"
+       alt="Los Agapandos Logo"
+       class="h-24 mb-4 cursor-pointer"
+     />
+   </a>
+    <div class="flex space-x-4 mb-4">
+      <a
+        href="https://www.facebook.com/cabanasentapalpa"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-gray-300">Facebook</a
+      >
+      <a
+        href="https://www.instagram.com/losagapandostapalpa/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-gray-300">Instagram</a
+      >
+    </div>
+    <button id="termsButton" class="text-white text-sm mt-4 hover:underline"
+      >Términos y condiciones</button
+    >
+    <button id="privacyButton" class="text-white text-sm mt-2 hover:underline"
+      >Aviso de Privacidad</button
+    >
+    <p class="text-white text-center text-sm mt-2">
+      © 2025 Los Agapandos Tapalpa. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const termsButton = document.getElementById("termsButton");
+    const termsPopup = document.getElementById("termsPopup");
+    const closeTermsPopup = document.getElementById("closeTermsPopup");
+
+    const privacyButton = document.getElementById("privacyButton");
+    const privacyPopup = document.getElementById("privacyPopup");
+    const closePrivacyPopup = document.getElementById("closePrivacyPopup");
+
+    if (termsButton && termsPopup && closeTermsPopup) {
+      termsButton.addEventListener("click", () => {
+        termsPopup.classList.remove("hidden");
+      });
+
+      closeTermsPopup.addEventListener("click", () => {
+        termsPopup.classList.add("hidden");
+      });
+
+      closeTermsPopup.addEventListener("touchstart", () => {
+        termsPopup.classList.add("hidden");
+      });
+
+      termsPopup.addEventListener("click", (event) => {
+        if (event.target === termsPopup) {
+          termsPopup.classList.add("hidden");
+        }
+      });
+    }
+
+    if (privacyButton && privacyPopup && closePrivacyPopup) {
+      privacyButton.addEventListener("click", () => {
+        privacyPopup.classList.remove("hidden");
+      });
+
+      closePrivacyPopup.addEventListener("click", () => {
+        privacyPopup.classList.add("hidden");
+      });
+
+      closePrivacyPopup.addEventListener("touchstart", () => {
+        privacyPopup.classList.add("hidden");
+      });
+
+      privacyPopup.addEventListener("click", (event) => {
+        if (event.target === privacyPopup) {
+          privacyPopup.classList.add("hidden");
+        }
+      });
+    }
+  });
+</script>
+<TerminosCondiciones />
+<AvisoPrivacidad />

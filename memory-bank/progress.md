@@ -1,22 +1,25 @@
-# Development Status: Los Agapandos Website
+# Development Status: Los Agapandos Web Application
 
 ## Completed Features and Components
-- **Hero Section (`src/components/seccion1.astro`):** Implemented with video background and GSAP animations.
-- **Informative Sections (`src/components/seccion2.astro`, `src/components/seccion3.astro`):** Developed with content, images, and GSAP/ScrollTrigger animations.
-- **Image Carousel Gallery (`src/components/seccion4.astro`):**
-    - Initial integration of Swiper.js using Web Components.
-    - Refactored styles to use Tailwind CSS and remove global conflicts.
-    - Reimplemented Swiper using traditional `div` structure and JavaScript initialization.
-    - Integrated local project images.
-    - Applied design patterns, fonts, and colors consistent with other sections.
-    - Resolved TypeScript error "Cannot find name 'Swiper'" by declaring `Swiper` globally.
+- Initial project setup and file structure.
+- Memory bank initialized with core documentation.
+- 360-degree image gallery implemented in `src/components/seccion5.astro` with grid display, hover effects, and Pannellum integration.
+- Gallery width space optimization completed with responsive sizing, reduced gaps, and larger image dimensions.
+- GSAP-powered smooth fade transitions implemented for gallery toggling between Cabañas Grandes and Chicas sections.
+- Carousel images centered in slides for improved visual presentation.
+- Responsive design enhancements added for mobile devices in gallery section.
+- Carousel dots removed and automatic image forwarding implemented in `GSAPCarousel.astro`.
+- Google Maps component created with embedded map displaying venue location.
+- GSAP ScrollTrigger animations added with curtain effect (top-to-bottom reveal) for map title and container on scroll.
+- Google Maps embed link updated to the provided embed code for "LOS AGAPANDOS TAPALPA".
 
 ## Current Implementation Status
-- The Swiper carousel in `src/components/seccion4.astro` is fully implemented and styled according to project guidelines.
-- All core memory bank documentation files have been initialized and updated.
+- The 360-degree image gallery is implemented according to the new requirements.
+- Gallery now uses width space more efficiently with responsive design patterns.
 
 ## Known Issues and Technical Debt
-- None identified at this moment.
+- General image optimization might be needed for all assets.
+- Pannellum integration resolved by using CDN links instead of local files.
 
 ## Deployment Status
-- Not applicable for this task.
+- Not yet deployed. Local development only.

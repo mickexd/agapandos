@@ -1,0 +1,302 @@
+<link rel="stylesheet" href="/navbar.css" />
+
+<nav class="text-white">
+  <div class="menu-bar">
+    <div class="menu-toggle-btn">
+      <div class="menu-toggle-label"><p>Menu</p></div>
+      <div class="menu-hamburger-icon">
+        <span class="bg-white"></span>
+        <span class="bg-white"></span>
+      </div>
+    </div>
+  </div>
+  <div class="menu-overlay">
+    <div class="menu-overlay-content">
+      <div class="menu-media-wrapper">
+        <img src="/images/seccion2.jpg" alt="" class="img-fade-bottom" />
+      </div>
+      <div class="menu-content-wrapper">
+        <div class="menu-content-main">
+          <div class="menu-col">
+            <div class="menu-link"><a href="#nosotros">Nosotros</a></div>
+            <div class="menu-link">
+              <a href="#servicios">Servicios y Experiencias</a>
+            </div>
+            <div class="menu-link"><a href="#galeria">Galeria</a></div>
+            <div class="menu-link"><a href="#galeria360">Galeria 360</a></div>
+            <div class="menu-link">
+              <a href="#reservaciones">Reservaciones</a>
+            </div>
+            <div class="menu-link"><a href="/venta">Venta de lotes</a></div>
+          </div>
+        </div>
+        <div class="menu-footer">
+          <div class="menu-col">
+            <p class="address-full">
+              Carretera Guadalajara – Tapalpa Km 22, Fraccionamiento Pinares
+              Tapalpa, Tapalpa, Jalisco, México
+            </p>
+            <p class="address-mobile">
+              Carretera Guadalajara – Tapalpa Km 22, Tapalpa, Jalisco
+            </p>
+          </div>
+          <div class="menu-col">
+            <p class="phone-full">+52 33 1848 5469</p>
+            <p class="phone-mobile">+52 33 1848 5469</p>
+            <p class="email-full">reservaciones@losagapandostapalpa.com</p>
+            <p class="email-mobile">reservaciones@losagapandostapalpa.com</p>
+            <p class="email-full">losagapandostapalpa@gmail.com</p>
+            <p class="email-mobile">losagapandostapalpa@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+  import gsap from "gsap";
+  import { CustomEase } from "gsap/CustomEase";
+  import { SplitText } from "gsap/SplitText";
+  import Lenis from "lenis";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Check if not on home page and modify menu
+    if (window.location.pathname !== '/') {
+      const menuCol = document.querySelector('.menu-content-main .menu-col');
+      if (menuCol) {
+        menuCol.innerHTML = '<div class="menu-link"><a href="/">Volver al inicio</a></div>';
+      }
+    }
+
+    gsap.registerPlugin(CustomEase, SplitText);
+    CustomEase.create("hop", ".87,0,.13,1");
+
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    const textContainers = document.querySelectorAll(".menu-col");
+    let splitTextByContainer = [];
+
+    textContainers.forEach((container) => {
+      const textElements = container.querySelectorAll("a, p");
+      let containerSplits = [];
+
+      textElements.forEach((element) => {
+        const split = SplitText.create(element, {
+          type: "lines",
+          mask: "lines",
+          linesClass: "line",
+        });
+        containerSplits.push(split);
+
+        gsap.set(split.lines, { y: "-110%" });
+      });
+
+      splitTextByContainer.push(containerSplits);
+    });
+
+    const container = document.querySelector(".container");
+    const menuToggleBtn = document.querySelector(".menu-toggle-btn");
+    const menuOverlay = document.querySelector(".menu-overlay");
+    const menuOverlayContainer = document.querySelector(
+      ".menu-overlay-content"
+    );
+    const menuMediaWrapper = document.querySelector(".menu-media-wrapper");
+    const copyContainers = document.querySelectorAll(".menu-col");
+    const menuToggleLabel = document.querySelector(".menu-toggle-label p");
+    const hamburgerIcon = document.querySelector(".menu-hamburger-icon");
+
+    let isMenuOpen = false;
+    let isAnimating = false;
+
+    menuToggleBtn.addEventListener("click", () => {
+      if (isAnimating) return;
+
+      if (!isMenuOpen) {
+        isAnimating = true;
+
+        lenis.stop();
+
+        // Add class to body when menu is open
+        document.body.classList.add("menu-open");
+
+        const tl = gsap.timeline();
+
+        tl.to(
+          menuToggleLabel,
+          {
+            y: "-110%",
+            duration: 1,
+            ease: "hop",
+          },
+          "<"
+        )
+          .to(
+            container,
+            {
+              y: "100svh",
+              duration: 1,
+              ease: "hop",
+            },
+            "<"
+          )
+          .to(
+            menuOverlay,
+            {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+              duration: 1,
+              ease: "hop",
+            },
+            "<"
+          )
+          .to(
+            menuOverlayContainer,
+            {
+              yPercent: 0,
+              duration: 1,
+              ease: "hop",
+            },
+            "<"
+          )
+          .to(
+            menuMediaWrapper,
+            {
+              opacity: 1,
+              duration: 0.75,
+              ease: "power2.out",
+              delay: 0.5,
+            },
+            "<"
+          );
+
+        splitTextByContainer.forEach((containerSplits) => {
+          const copyLines = containerSplits.flatMap((split) => split.lines);
+          tl.to(
+            copyLines,
+            {
+              y: "0%",
+              duration: 2,
+              ease: "hop",
+              stagger: -0.075,
+            },
+            -0.15
+          );
+        });
+
+        hamburgerIcon.classList.add("active");
+
+        tl.call(() => {
+          isAnimating = false;
+        });
+
+        isMenuOpen = true;
+      } else {
+        isAnimating = true;
+
+        hamburgerIcon.classList.remove("active");
+        const tl = gsap.timeline();
+
+        // Remove class from body when menu is closed
+        document.body.classList.remove("menu-open");
+
+        tl.to(container, {
+          y: "0svh",
+          duration: 1,
+          ease: "hop",
+        })
+          .to(
+            menuOverlay,
+            {
+              clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+              duration: 1,
+              ease: "hop",
+            },
+            "<"
+          )
+          .to(
+            menuOverlayContainer,
+            {
+              yPercent: -50,
+              duration: 1,
+              ease: "hop",
+            },
+            "<"
+          )
+          .to(
+            menuToggleLabel,
+            {
+              y: "0%",
+              duration: 1,
+              ease: "hop",
+            },
+            "<"
+          )
+          .to(
+            copyContainers,
+            {
+              opacity: 0.25,
+              duration: 1,
+              ease: "hop",
+            },
+            "<"
+          );
+
+        tl.call(() => {
+          splitTextByContainer.forEach((containerSplits) => {
+            const copyLines = containerSplits.flatMap((split) => split.lines);
+            gsap.set(copyLines, { y: "-110%" });
+          });
+
+          gsap.set(copyContainers, { opacity: 1 });
+          gsap.set(menuMediaWrapper, { opacity: 0 });
+
+          isAnimating = false;
+          lenis.start();
+        });
+
+        isMenuOpen = false;
+      }
+    });
+
+    // Add smooth scrolling functionality for menu links
+    const menuLinks = document.querySelectorAll(".menu-link a");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const targetId = link.getAttribute("href");
+
+        if (targetId && targetId.startsWith("#")) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetId);
+
+          if (targetElement) {
+            // Close the menu first if it's open
+            if (isMenuOpen && !isAnimating) {
+              menuToggleBtn.click();
+
+              // Wait for menu close animation to complete before scrolling
+              setTimeout(() => {
+                lenis.scrollTo(targetElement, {
+                  offset: 0,
+                  duration: 1.5,
+                  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                });
+              }, 1000);
+            } else {
+              // Menu is already closed, scroll immediately
+              lenis.scrollTo(targetElement, {
+                offset: 0,
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              });
+            }
+          }
+        }
+        // For non-hash links (like /venta), let the browser handle navigation
+      });
+    });
+  });
+</script>
