@@ -1,0 +1,139 @@
+---
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+---
+
+<style>
+  /* Custom styles to override Swiper defaults and match theme */
+  .swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 500px; /* Increased width for bigger gallery */
+    height: 400px; /* Increased height for bigger gallery */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  /* Custom styling for navigation arrows */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #fff !important; /* White arrows */
+  }
+
+  /* Custom styling for pagination bullets */
+  .swiper-pagination-bullet {
+    background-color: #fff !important; /* White bullets */
+    opacity: 0.8;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #fff !important; /* Active bullet remains white */
+    opacity: 1;
+  }
+</style>
+
+<section
+  class="relative w-full h-screen overflow-hidden bg-[#6c6464] flex flex-col items-center justify-center py-4"
+>
+  <h2
+    class="text-white text-6xl font-bold text-center mb-6 font-aguafina text-shadow-md"
+  >
+    Galería
+  </h2>
+  <!-- Swiper -->
+  <div class="swiper mySwiper w-full max-w-7xl h-[600px] rounded-xl">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="/images/chicas/camas.jpg" alt="Camas" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/chicas/chica.jpg" alt="Chica" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/chicas/cocina.jpg" alt="Cocina" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/chicas/estancia.jpg" alt="Estancia" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/chicas/recamara.jpg" alt="Recamara" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/grandes/chimenea.jpg" alt="Chimenea" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/grandes/cocina.jpg" alt="Cocina" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/grandes/grande.jpg" alt="Grande" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/grandes/king.jpg" alt="King" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/grandes/queen.jpg" alt="Queen" />
+      </div>
+      <div class="swiper-slide">
+        <img src="/images/agapandos-aereo.jpg" alt="Vista aérea de Los Agapandos" />
+      </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Navigation -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<script>
+  import { Swiper } from "swiper";
+  import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const swiper = new Swiper(".mySwiper", {
+      modules: [EffectCoverflow, Pagination, Navigation],
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+    });
+  });
+</script>

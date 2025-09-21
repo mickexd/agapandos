@@ -1,0 +1,123 @@
+---
+import "../StickyCards/stickyCards.css";
+---
+
+<h1
+  id="servicios-title"
+  class="text-white self-center text-6xl font-medium h-48 font-aguafina font-poppins flex items-center justify-center"
+>
+  Nuestros Servicios y Experiencias
+</h1>
+
+<div class="sticky-cards"></div>
+
+  <script>
+    import stickyCardsData from "../StickyCards/stickyCardsData";
+
+    import gsap from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+    import Lenis from "lenis";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis();
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+
+      // Animate the main title
+      const title = document.getElementById("servicios-title");
+      if (title) {
+        // Set initial state
+        gsap.set(title, {
+          opacity: 0,
+          y: 100,
+          scale: 0.8
+        });
+
+        // Create the animation
+        gsap.to(title, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: title,
+            start: "top 85%",
+            toggleActions: "play reverse play reverse"
+          }
+        });
+      }
+
+      const container = document.querySelector(".sticky-cards");
+
+      stickyCardsData.forEach((cardData, index) => {
+        const card = document.createElement("div");
+        card.className = "sticky-card rounded-xl";
+
+        card.innerHTML = `
+      <div class="sticky-card-index">
+        <h1 class="text-white font-poppins">${cardData.index}</h1>
+      </div>
+      <div class="sticky-card-content">
+        <div class="sticky-card-content-wrapper">
+          <h1 class="sticky-card-header text-white font-poppins">${cardData.title}</h1>
+          <div class="sticky-card-img">
+            <img src="${cardData.image}" alt="" class="rounded-xl" />
+          </div>
+          <div class="sticky-card-copy">
+            <div class="sticky-card-copy-title"></div>
+            <div class="sticky-card-copy-description">
+              <p class="text-white font-poppins">${cardData.description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+        if (container) {
+          container.appendChild(card);
+        }
+      });
+
+      const stickyCards = document.querySelectorAll(".sticky-card");
+
+      stickyCards.forEach((card, index) => {
+        if (index < stickyCards.length - 1) {
+          ScrollTrigger.create({
+            trigger: card,
+            start: "top top",
+            endTrigger: stickyCards[stickyCards.length - 1],
+            end: "top top",
+            pin: true,
+            pinSpacing: false,
+          });
+        }
+
+        if (index < stickyCards.length - 1) {
+          ScrollTrigger.create({
+            trigger: stickyCards[index + 1],
+            start: "top bottom",
+            end: "top top",
+            onUpdate: (self) => {
+              const progress = self.progress;
+              const scale = 1 - progress * 0.25;
+              const rotation = (index % 2 === 0 ? 5 : -5) * progress;
+              const afterOpacity = progress;
+
+              gsap.set(card, {
+                scale: scale,
+                rotation: rotation,
+                "--after-opacity": afterOpacity,
+              });
+            },
+          });
+        }
+      });
+    });
+  </script>
+

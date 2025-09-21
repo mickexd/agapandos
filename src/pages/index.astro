@@ -1,16 +1,39 @@
 ---
-
+import "../styles/global.css";
+import Intro from "../components/intro.astro";
+import Seccion1 from "../components/seccion1.astro";
+import Seccion2 from "../components/seccion2.astro";
+import Seccion3 from "../components/seccion3.astro";
+import Seccion4 from "../components/seccion4.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aguafina+Script&display=swap"
+      rel="stylesheet"
+    />
+    <title>Cabañas Los Agapandos</title>
+  </head>
+  <body class="font-poppins bg-[#6c6464]">
+    <Intro />
+
+    <!-- Main content (hidden behind loading screen initially) -->
+    <main class="min-h-screen">
+      <Seccion1 />
+      <Seccion2 />
+      <Seccion3 />
+      <Seccion4 />
+    </main>
+  </body>
 </html>

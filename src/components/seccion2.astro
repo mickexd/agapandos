@@ -1,0 +1,112 @@
+---
+// No props needed for this component
+---
+
+<section id="seccion2" class="h-screen bg-[#6c6464] relative">
+  <div class="flex w-auto h-full">
+    <div class="w-1/2 flex justify-end pb-24">
+      <img
+        id="seccion2-image"
+        src="/images/seccion2.jpg"
+        alt="Seccion 2 Image"
+        class="h-[85%] w-auto rounded-xl self-end"
+      />
+    </div>
+    <div class="w-1/2 flex flex-col justify-end text-white px-12">
+      <h1
+        id="seccion2-h1"
+        class="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-6xl font-bold z-10 text-center w-full shadow-letter font-aguafina text-shadow-md"
+      >
+        Un lugar para descansar
+      </h1>
+      <p id="seccion2-p" class="text-lg self-start pb-24 px-8">
+        Cabañas Los Agapandos representa un concepto arquitectónico innovador
+        que combina sostenibilidad ambiental con el máximo confort. Pioneros en
+        turismo ecológico responsable, nuestras instalaciones aprovechan
+        inteligentemente los recursos naturales, especialmente la energía solar,
+        sin comprometer las comodidades que esperas de un alojamiento de
+        calidad. <br /><br /> Ubicadas en un entorno rústico y preservado, nuestras
+        cabañas han sido diseñadas como un santuario donde podrás desconectarte del
+        estrés urbano y reconectarte contigo mismo. Cada espacio está cuidadosamente
+        pensado para ofrecerte momentos de relajación genuina y renovación personal.
+        <br /><br /> Hemos aprovechado y respetado las bondades de los recursos naturales,
+        principalmente el sol, sin descuidar las comodidades de un alojamiento normal,
+        lo que hacen de nuestros espacios un lugar ideoneo para el relajamiento,
+        reconección y reposo del bullicio y estres propio de la ciudad. <br />
+        <br />
+        <span class="font-bold">Para los adultos:</span> Disfruta de áreas exclusivas
+        perfectas para reuniones íntimas con amigos, cenas al aire libre y momentos
+        de convivencia con una copa de vino bajo las estrellas. <br /><span
+          class="font-bold">Para los más pequeños:</span
+        > Más de 3,000 metros cuadrados de jardines seguros donde los niños pueden
+        explorar, jugar y crear recuerdos inolvidables en contacto directo con la
+        naturaleza. <br />
+        <span class="font-bold">Para toda la familia:</span> Amplias terrazas que
+        invitan a la convivencia, ideales para compartir historias, contemplar el
+        paisaje y crear vínculos duraderos.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    function initScrollAnimations() {
+      const section = document.querySelector("#seccion2");
+      const h1 = document.getElementById("seccion2-h1");
+      const p = document.getElementById("seccion2-p");
+      const img = document.getElementById("seccion2-image");
+
+      if (section && h1 && p && img) {
+        // Set initial states
+        gsap.set([h1, p, img], { opacity: 0 });
+        gsap.set(h1, { y: 100 });
+        gsap.set(p, { y: 50 });
+
+        // Create timeline for coordinated animations
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play reverse play reverse",
+          },
+        });
+
+        // Add animations to timeline
+        tl.to(img, {
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+        })
+          .to(
+            h1,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+            },
+            "-=0.4"
+          ) // Start 0.4 seconds before image finishes
+          .to(
+            p,
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: "power3.out",
+            },
+            "-=0.6"
+          ); // Start 0.6 seconds before h1 finishes
+      }
+    }
+
+    // Initialize animations when DOM is ready
+    document.addEventListener("DOMContentLoaded", () => {
+      initScrollAnimations();
+    });
+  </script>
+</section>

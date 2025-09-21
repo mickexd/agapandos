@@ -1,0 +1,132 @@
+---
+import AnimatedButton from "../animated-button/animated-button.jsx";
+---
+
+<!-- Hero Section with Video Background -->
+<section class="relative w-full h-screen overflow-hidden">
+  <!-- Video Background -->
+  <video
+    id="hero-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    class="absolute top-0 left-0 w-full h-full object-cover z-0"
+  >
+    <source src="/video/intro.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Animated Text Container -->
+  <div
+    class="relative z-20 flex flex-col items-center justify-center w-full h-full"
+  >
+    <h1
+      id="hero-text"
+      class="text-white text-4xl md:text-5xl lg:text-6xl font-light text-center max-w-5xl px-4 leading-tight pb-12 font-aguafina italic text-shadow-md"
+    >
+      <span class="block"
+        >Naturaleza, armonía y descanso para toda la familia en la sierra de</span
+      >
+      <span class="block">Tapalpa</span>
+    </h1>
+    <AnimatedButton label="Reservar" route="/studio" animateOnScroll={false} />
+  </div>
+</section>
+
+<script>
+  import { gsap } from "gsap";
+
+  // Function to split text into individual characters
+  function splitTextIntoChars(element: HTMLElement) {
+    const text = element.textContent || "";
+    element.innerHTML = "";
+
+    const chars: HTMLSpanElement[] = [];
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      const span = document.createElement("span");
+
+      if (char === " ") {
+        span.innerHTML = "&nbsp;";
+        span.style.display = "inline-block";
+      } else {
+        span.textContent = char;
+        span.style.display = "inline-block";
+      }
+
+      // Set initial state for animation
+      span.style.opacity = "0";
+      span.style.transform = "translateY(100px)";
+      span.style.textShadow = "1px 1px 2px rgba(0, 0, 0, 0.5)";
+
+      element.appendChild(span);
+      chars.push(span);
+    }
+
+    return chars;
+  }
+
+  // Function to start the hero animation
+  function startHeroAnimation() {
+    const heroText = document.getElementById("hero-text") as HTMLElement;
+    if (!heroText) return;
+
+    // Split text into characters
+    const chars = splitTextIntoChars(heroText);
+
+    // Make text visible before starting the animation
+    gsap.set(heroText, { autoAlpha: 1 });
+
+    // Create timeline for staggered character animation
+    const tl = gsap.timeline();
+
+    // Animate each character from bottom to top
+    tl.to(chars, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+      stagger: {
+        amount: 1.5, // Total time to stagger all characters
+        from: "start",
+      },
+    });
+  }
+
+  // Wait for the loading screen to be removed
+  function checkLoadingScreen() {
+    const loadingScreen = document.getElementById("loading-screen");
+    if (!loadingScreen) {
+      // Loading screen is gone, update showPreloader and start the animation and video
+      // No need to update the button's delay anymore
+      // The AnimatedButton component handles this automatically
+      setTimeout(() => {
+        startHeroAnimation();
+        const video = document.getElementById("hero-video") as HTMLVideoElement;
+        if (video) {
+          video.play().catch((error: any) => {
+            console.log("Video autoplay failed:", error);
+          });
+        }
+      }, 800); // Slightly longer delay for better effect
+    } else {
+      // Check again in 100ms
+      setTimeout(checkLoadingScreen, 100);
+    }
+  }
+
+  // Start checking when the page loads
+  document.addEventListener("DOMContentLoaded", () => {
+    checkLoadingScreen();
+  });
+</script>
+
+<style>
+  /* Ensure proper overflow handling for the animation */
+  #hero-text {
+    visibility: hidden;
+  }
+</style>

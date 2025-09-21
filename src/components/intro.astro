@@ -1,0 +1,113 @@
+---
+// No props needed for this component
+---
+
+<!-- Loading Screen Component -->
+<div
+  id="loading-screen"
+  class="fixed inset-0 z-50 flex items-center justify-center"
+  style="background-color: #6c6464;"
+>
+  <!-- Logo Container -->
+  <div id="logo-container" class="flex flex-col items-center">
+    <!-- PNG Logo -->
+    <img
+      id="logo-png"
+      src="/images/logo-white.png"
+      alt="Los Agapandos Logo"
+      class="w-64 h-auto mb-8 opacity-0 p-2"
+    />
+
+    <!-- Loading Bar -->
+    <div class="w-64 h-2 bg-white rounded-full overflow-hidden">
+      <div id="loading-bar" class="h-full bg-[#aa75ad]" style="width: 0%;">
+      </div>
+    </div>
+
+    <!-- Loading Percentage -->
+    <div
+      id="loading-percentage"
+      class="text-white text-xl font-poppins font-medium mt-4 opacity-0"
+    >
+      0%
+    </div>
+  </div>
+</div>
+
+
+<script>
+  import { gsap } from "gsap";
+
+  // Set initial states
+  gsap.set("#logo-png", { opacity: 0, scale: 0.8 });
+  gsap.set("#loading-bar", { width: "0%" });
+  gsap.set("#loading-percentage", { opacity: 0, y: 20 });
+
+  // Create timeline
+  const tl = gsap.timeline({
+    onComplete: () => {
+      // Remove loading screen from DOM after animation
+      document.getElementById("loading-screen")?.remove();
+    },
+  });
+
+  // Preloader animation sequence
+  tl.to("#logo-png", {
+    opacity: 1,
+    scale: 1,
+    duration: 1,
+    ease: "back.out(1.7)",
+  })
+    .to(
+      "#loading-percentage",
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    )
+    .to(
+      "#loading-bar",
+      {
+        width: "100%",
+        duration: 2,
+        ease: "power2.inOut",
+        onUpdate: function () {
+          const percentageElement =
+            document.getElementById("loading-percentage");
+          if (percentageElement) {
+            percentageElement.textContent = `${Math.round(this.progress() * 100)}%`;
+          }
+        },
+      },
+      "-=0.5"
+    )
+    .to(
+      "#logo-container",
+      {
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.in",
+      },
+      "+=0.5"
+    )
+    .to(
+      "#loading-screen",
+      {
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+      },
+      "+=0.5"
+    );
+</script>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+  .font-poppins {
+    font-family: "Poppins", sans-serif;
+  }
+</style>
