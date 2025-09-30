@@ -1,15 +1,20 @@
 <link rel="stylesheet" href="/navbar.css" />
 
-<nav class="text-white">
+<nav class="text-white relative">
   <div class="menu-bar">
     <div class="menu-toggle-btn">
-      <div class="menu-toggle-label"><p>Menu</p></div>
+      <div class="menu-toggle-label"><p class="hidden lg:block">Menu</p></div>
       <div class="menu-hamburger-icon">
         <span class="bg-white"></span>
         <span class="bg-white"></span>
       </div>
     </div>
   </div>
+  <img
+    src="/images/logo-white.png"
+    alt="Logo"
+    class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-24 object-contain"
+  />
   <div class="menu-overlay">
     <div class="menu-overlay-content">
       <div class="menu-media-wrapper">
@@ -61,10 +66,11 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     // Check if not on home page and modify menu
-    if (window.location.pathname !== '/') {
-      const menuCol = document.querySelector('.menu-content-main .menu-col');
+    if (window.location.pathname !== "/") {
+      const menuCol = document.querySelector(".menu-content-main .menu-col");
       if (menuCol) {
-        menuCol.innerHTML = '<div class="menu-link"><a href="/">Volver al inicio</a></div>';
+        menuCol.innerHTML =
+          '<div class="menu-link"><a href="/">Volver al inicio</a></div>';
       }
     }
 

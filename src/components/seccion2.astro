@@ -29,18 +29,16 @@
       <div class="shadow-md">
         <h1
           id="seccion2-h1"
-          class="backdrop-blur bg-black/20 text-white text-4xl md:text-6xl font- text-center mb-4 lg:mb-0 lg:absolute md:top-1/5 xl:top-1/5 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 lg:w-1/4 shadow-letter italianno-regular text-shadow-md rounded-2xl"
+          class="backdrop-blur bg-black/20 text-white text-4xl md:text-5xl xl:text-4xl 2xl:text-6xl font- text-center mb-4 lg:mb-0 lg:absolute md:top-1/5 xl:top-1/5 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 lg:w-auto lg:py-2 lg:px-4 shadow-letter italianno-regular text-shadow-md rounded-xl"
         >
           Un lugar para descansar
         </h1>
       </div>
 
-      <div
-        class="flex-1 overflow-y-auto lg:overflow-visible lg:flex lg:flex-col lg:justify-end"
-      >
+      <div class="flex-1 overflow-y-auto lg:flex lg:flex-col lg:justify-end">
         <p
           id="seccion2-p"
-          class="text-xs md:text-[12px] lg:text-[16px] self-start pb-4 lg:pb-24 px-1 sm:px-2 lg:px-8 leading-relaxed shadow-lg lg:shadow-none text-left"
+          class="text-xs md:text-[12px] lg:text-[12px] xl:text-[16px] 3xl:text-[12px] self-start pb-4 lg:pb-24 px-1 sm:px-2 lg:px-8 leading-relaxed shadow-lg lg:shadow-none text-left lg:overflow-y-scroll lg:h-3/4"
         >
           Cabañas Los Agapandos representa un concepto arquitectónico innovador
           que combina sostenibilidad ambiental con el máximo confort. Pioneros
@@ -132,4 +130,32 @@
       initScrollAnimations();
     });
   </script>
+
+  <style>
+    /* Custom scrollbar styling for the paragraph */
+    #seccion2-p::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #seccion2-p::-webkit-scrollbar-track {
+      background: rgba(108, 100, 100, 0.2);
+      border-radius: 4px;
+    }
+
+    #seccion2-p::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    #seccion2-p::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Firefox scrollbar styling */
+    #seccion2-p {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.3) rgba(108, 100, 100, 0.2);
+    }
+  </style>
 </section>

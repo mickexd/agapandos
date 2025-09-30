@@ -28,7 +28,7 @@ body.menu-open nav {
   top: 0;
   right: 0;
   width: 100vw;
-  padding: 2rem 2rem 2rem 0;
+  padding: 2rem 3rem 2rem 0; /* Increased right padding */
   display: flex;
   justify-content: flex-end;
   align-items: center;
