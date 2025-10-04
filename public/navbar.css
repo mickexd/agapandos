@@ -196,9 +196,11 @@ body.menu-open .menu-overlay-content {
 }
 
 .menu-link a {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 500;
   line-height: 1.2;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .menu-tag a,
@@ -224,6 +226,22 @@ body.menu-open .menu-overlay-content {
   display: block;
 }
 
+/* Handle high zoom levels on desktop (effective viewport 1001-1400px) */
+@media (max-width: 1400px) and (min-width: 1001px) {
+  .menu-link a {
+    font-size: clamp(2.2rem, 2.8vw, 3rem);
+  }
+  
+  .menu-content-main {
+    width: 85%;
+    gap: 1.5rem;
+  }
+  
+  .menu-footer {
+    width: 85%;
+  }
+}
+
 @media (max-width: 1000px) {
   .menu-media-wrapper {
     display: none;
@@ -246,7 +264,7 @@ body.menu-open .menu-overlay-content {
   }
 
   .menu-link a {
-    font-size: 3rem;
+    font-size: clamp(2rem, 3vw, 3rem);
   }
 
   .menu-tag a {
@@ -256,7 +274,7 @@ body.menu-open .menu-overlay-content {
 
 @media (max-width: 768px) {
   .menu-link a {
-    font-size: 2.2rem;
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem);
     line-height: 1.3;
   }
   
@@ -289,7 +307,7 @@ body.menu-open .menu-overlay-content {
 
 @media (max-width: 480px) {
   .menu-link a {
-    font-size: 1.8rem;
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
     line-height: 1.4;
   }
   

@@ -1,0 +1,922 @@
+---
+// Análisis Financiero Component
+---
+
+<div class="mt-16 animate-section" id="analisis-financiero">
+  <div class="text-center mb-12">
+    <h2
+      class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 italianno-regular animate-text-left"
+    >
+      Análisis Financiero 2026
+    </h2>
+    <p class="text-lg md:text-xl text-gray-200 animate-text-right">
+      Proyecciones de rentabilidad bajo diferentes escenarios de ocupación
+    </p>
+  </div>
+
+  <!-- Scenario Selector Tabs -->
+  <div class="bg-white/10 p-4 md:p-6 rounded-lg mb-8">
+    <div class="flex flex-wrap justify-center gap-2 mb-6">
+      <button
+        class="scenario-tab active px-3 md:px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition-all text-xs md:text-base font-medium"
+        data-scenario="1"
+      >
+        Escenario 1
+      </button>
+      <button
+        class="scenario-tab px-3 md:px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition-all text-xs md:text-base font-medium"
+        data-scenario="2"
+      >
+        Escenario 2
+      </button>
+      <button
+        class="scenario-tab px-3 md:px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition-all text-xs md:text-base font-medium"
+        data-scenario="3"
+      >
+        Escenario 3
+      </button>
+      <button
+        class="scenario-tab px-3 md:px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition-all text-xs md:text-base font-medium"
+        data-scenario="4"
+      >
+        Escenario 4
+      </button>
+    </div>
+
+    <div id="scenario-content">
+      <!-- Scenario 1: FDS 2 noches -->
+      <div class="scenario-data active" data-scenario="1">
+        <div class="text-center mb-6 animate-text-left">
+          <h3 class="text-xl md:text-2xl font-bold mb-2">
+            Escenario 1: 100% Ocupación Fines de Semana (2 noches)
+          </h3>
+          <p class="text-sm md:text-base text-gray-200">
+            Premisa: Solo rentas de fin de semana de viernes-domingo
+          </p>
+          <p class="text-xs md:text-sm text-gray-300 mt-1">
+            52 fines de semana × 2 noches = 104 noches/año por cabaña
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-6">
+          <!-- 1 Lote -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg animate-text-left">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              1 Lote
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L (2 grandes)</p>
+                <p>Ingresos: <span class="font-bold">$936,000</span></p>
+                <p>C. Variables: <span class="font-bold">$150,461</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$420,151</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">44.9%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-K (2 chicas)</p>
+                <p>Ingresos: <span class="font-bold">$936,000</span></p>
+                <p>C. Variables: <span class="font-bold">$121,227</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$449,385</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">48.0%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-J (mixto)</p>
+                <p>Ingresos: <span class="font-bold">$936,000</span></p>
+                <p>C. Variables: <span class="font-bold">$135,844</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$434,768</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">46.4%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 Lotes -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg animate-text-left">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              2 Lotes
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-K</p>
+                <p>Ingresos: <span class="font-bold">$1,872,000</span></p>
+                <p>C. Variables: <span class="font-bold">$271,688</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,234,924</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">66.0%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$1,872,000</span></p>
+                <p>C. Variables: <span class="font-bold">$286,305</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,220,307</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">65.2%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-K + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$1,872,000</span></p>
+                <p>C. Variables: <span class="font-bold">$257,071</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,249,541</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">66.7%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Lotes -->
+          <div
+            class="bg-white/5 p-4 md:p-6 rounded-lg border-2 border-yellow-500/30 animate-text-right"
+          >
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              3 Lotes ⭐
+            </h4>
+            <div class="space-y-2 text-xs md:text-sm">
+              <p class="text-gray-300 font-medium">Paquete Completo</p>
+              <p>
+                Ingresos: <span class="font-bold text-base">$2,808,000</span>
+              </p>
+              <p>C. Variables: <span class="font-bold">$407,532</span></p>
+              <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+              <p class="text-green-400 mt-2 text-base">
+                U. Neta: <span class="font-bold">$2,035,080</span>
+              </p>
+              <p class="text-yellow-300 text-base">
+                Margen: <span class="font-bold">72.5%</span>
+              </p>
+
+              <div
+                class="mt-3 p-2 bg-yellow-500/10 rounded border border-yellow-500/30"
+              >
+                <p class="font-bold mb-1 text-xs">Punto de Equilibrio:</p>
+                <p class="text-xs">20 noches/año (19.2%)</p>
+                <p class="text-yellow-200 text-xs mt-1">
+                  ✓ Riesgo: <span class="font-bold">BAJO</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-blue-500/10 p-3 md:p-4 rounded-lg border border-blue-500/30 animate-text-left"
+        >
+          <p class="text-xs md:text-sm">
+            <span class="font-bold">Conclusión:</span> Operación conservadora con
+            alta rentabilidad. Márgenes superiores al 44% operando solo fines de
+            semana.
+          </p>
+        </div>
+      </div>
+
+      <!-- Scenario 2: 100% Ocupación -->
+      <div class="scenario-data hidden" data-scenario="2">
+        <div class="text-center mb-6 animate-text-left">
+          <h3 class="text-xl md:text-2xl font-bold mb-2">
+            Escenario 2: 100% Ocupación entre semana  + 2 noches en Fin de Semana (FDS)
+          </h3>
+          <p class="text-sm md:text-base text-gray-200">
+            ⁠Premisa: Rentas de lunes-viernes y viernes-domingo 
+          </p>
+          <p class="text-xs md:text-sm text-gray-300 mt-1">
+            52 semanas x 4 noches = 208 noches entre semana + 104 noches en FDS/año por cabaña
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-6">
+          <!-- 1 Lote -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              1 Lote
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L (2 grandes)</p>
+                <p>Ingresos: <span class="font-bold">$2,756,000</span></p>
+                <p>C. Variables: <span class="font-bold">$526,874</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,863,738</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">67.6%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-K (2 chicas)</p>
+                <p>Ingresos: <span class="font-bold">$2,236,000</span></p>
+                <p>C. Variables: <span class="font-bold">$425,234</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,445,378</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">64.6%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-J (mixto)</p>
+                <p>Ingresos: <span class="font-bold">$2,496,000</span></p>
+                <p>C. Variables: <span class="font-bold">$476,054</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,654,558</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">66.3%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 Lotes -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              2 Lotes
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-K</p>
+                <p>Ingresos: <span class="font-bold">$4,992,000</span></p>
+                <p>C. Variables: <span class="font-bold">$952,108</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$3,674,504</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">73.6%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$5,252,000</span></p>
+                <p>C. Variables: <span class="font-bold">$1,002,928</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$3,883,684</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">73.9%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-K + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$4,732,000</span></p>
+                <p>C. Variables: <span class="font-bold">$901,288</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$3,465,324</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">73.2%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Lotes -->
+          <div
+            class="bg-white/5 p-4 md:p-6 rounded-lg border-2 border-yellow-500/30"
+          >
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              3 Lotes ⭐
+            </h4>
+            <div class="space-y-2 text-xs md:text-sm">
+              <p class="text-gray-300 font-medium">Paquete Completo</p>
+              <p>
+                Ingresos: <span class="font-bold text-base">$7,488,000</span>
+              </p>
+              <p>C. Variables: <span class="font-bold">$1,428,162</span></p>
+              <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+              <p class="text-green-400 mt-2 text-base">
+                U. Neta: <span class="font-bold">$5,694,450</span>
+              </p>
+              <p class="text-yellow-300 text-base">
+                Margen: <span class="font-bold">76.0%</span>
+              </p>
+
+              <div
+                class="mt-3 p-2 bg-yellow-500/10 rounded border border-yellow-500/30"
+              >
+                <p class="font-bold mb-1 text-xs">Punto de Equilibrio:</p>
+                <p class="text-xs">20 noches/año (5.5%)</p>
+                <p class="text-yellow-200 text-xs mt-1">
+                  ✓ Riesgo: <span class="font-bold">MUY BAJO</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-blue-500/10 p-3 md:p-4 rounded-lg border border-blue-500/30"
+        >
+          <p class="text-xs md:text-sm">
+            <span class="font-bold">Conclusión:</span> Escenario ideal con máxima
+            rentabilidad. Márgenes superiores al 64% con ocupación total. Genera
+            ingresos superiores a $7.4M anuales con paquete completo.
+          </p>
+        </div>
+      </div>
+
+      <!-- Scenario 3: FDS 1 noche -->
+      <div class="scenario-data hidden" data-scenario="3">
+        <div class="text-center mb-6">
+          <h3 class="text-xl md:text-2xl font-bold mb-2">
+            Escenario 3: 100% Ocupación Fines de Semana (FDS) por 1 noche
+          </h3>
+          <p class="text-sm md:text-base text-gray-200">
+            Premisa: Solo rentas de fin de semana  de sábado-domingo
+          </p>
+          <p class="text-xs md:text-sm text-gray-300 mt-1">
+            ⁠52 fines de semana × 1 noche = 52 noches/año por cabaña
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-6">
+          <!-- 1 Lote -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              1 Lote
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L (2 grandes)</p>
+                <p>Ingresos: <span class="font-bold">$468,000</span></p>
+                <p>C. Variables: <span class="font-bold">$75,231</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$27,381</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">5.9%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-K (2 chicas)</p>
+                <p>Ingresos: <span class="font-bold">$468,000</span></p>
+                <p>C. Variables: <span class="font-bold">$60,614</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$41,998</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">9.0%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-J (mixto)</p>
+                <p>Ingresos: <span class="font-bold">$468,000</span></p>
+                <p>C. Variables: <span class="font-bold">$67,922</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$34,690</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">7.4%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 Lotes -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              2 Lotes
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-K</p>
+                <p>Ingresos: <span class="font-bold">$936,000</span></p>
+                <p>C. Variables: <span class="font-bold">$135,845</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$434,767</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">46.4%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$936,000</span></p>
+                <p>C. Variables: <span class="font-bold">$143,153</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$427,459</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">45.7%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-K + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$936,000</span></p>
+                <p>C. Variables: <span class="font-bold">$128,536</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$442,076</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">47.2%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Lotes -->
+          <div
+            class="bg-white/5 p-4 md:p-6 rounded-lg border-2 border-yellow-500/30"
+          >
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              3 Lotes ⭐
+            </h4>
+            <div class="space-y-2 text-xs md:text-sm">
+              <p class="text-gray-300 font-medium">Paquete Completo</p>
+              <p>
+                Ingresos: <span class="font-bold text-base">$1,404,000</span>
+              </p>
+              <p>C. Variables: <span class="font-bold">$203,767</span></p>
+              <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+              <p class="text-green-400 mt-2 text-base">
+                U. Neta: <span class="font-bold">$834,845</span>
+              </p>
+              <p class="text-yellow-300 text-base">
+                Margen: <span class="font-bold">59.5%</span>
+              </p>
+
+              <div
+                class="mt-3 p-2 bg-yellow-500/10 rounded border border-yellow-500/30"
+              >
+                <p class="font-bold mb-1 text-xs">Punto de Equilibrio:</p>
+                <p class="text-xs">20 noches/año (38.5%)</p>
+                <p class="text-yellow-200 text-xs mt-1">
+                  ✓ Riesgo: <span class="font-bold">MODERADO</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-orange-500/10 p-3 md:p-4 rounded-lg border border-orange-500/30"
+        >
+          <p class="text-xs md:text-sm">
+            <span class="font-bold">Conclusión:</span> Escenario menos rentable.
+            Requiere mayor ocupación para alcanzar punto de equilibrio. Se recomienda
+            combinarlo con rentas entre semana.
+          </p>
+        </div>
+      </div>
+
+      <!-- Scenario 4: ES + FDS 1 noche -->
+      <div class="scenario-data hidden" data-scenario="4">
+        <div class="text-center mb-6">
+          <h3 class="text-xl md:text-2xl font-bold mb-2">
+            ⁠Escenario 4: 100% Ocupación entre semana + 1 noche en Fin de Semana ( FDS)
+          </h3>
+          <p class="text-sm md:text-base text-gray-200">
+            Premisa: Rentas de lunes-viernes y sábado-domingo 
+          </p>
+          <p class="text-xs md:text-sm text-gray-300 mt-1">
+            52 semanas x 4 noches = 208 noches entre semana + 52 noches en FDS/año por cabaña
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6 mb-6">
+          <!-- 1 Lote -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              1 Lote
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L (2 grandes)</p>
+                <p>Ingresos: <span class="font-bold">$2,288,000</span></p>
+                <p>C. Variables: <span class="font-bold">$451,643</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,470,969</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">64.3%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-K (2 chicas)</p>
+                <p>Ingresos: <span class="font-bold">$1,768,000</span></p>
+                <p>C. Variables: <span class="font-bold">$364,620</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,037,992</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">58.7%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-J (mixto)</p>
+                <p>Ingresos: <span class="font-bold">$2,028,000</span></p>
+                <p>C. Variables: <span class="font-bold">$408,132</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$1,254,480</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">61.9%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 Lotes -->
+          <div class="bg-white/5 p-4 md:p-6 rounded-lg">
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              2 Lotes
+            </h4>
+            <div class="space-y-3 text-xs md:text-sm">
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-K</p>
+                <p>Ingresos: <span class="font-bold">$4,056,000</span></p>
+                <p>C. Variables: <span class="font-bold">$816,263</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$2,874,349</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">70.9%</span>
+                </p>
+              </div>
+              <div class="pb-2 border-b border-white/10">
+                <p class="text-gray-300 mb-1 font-medium">77-L + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$4,316,000</span></p>
+                <p>C. Variables: <span class="font-bold">$859,775</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$3,090,837</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">71.6%</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-gray-300 mb-1 font-medium">77-K + 77-J</p>
+                <p>Ingresos: <span class="font-bold">$3,796,000</span></p>
+                <p>C. Variables: <span class="font-bold">$772,752</span></p>
+                <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+                <p class="text-green-300 mt-1">
+                  U. Neta: <span class="font-bold">$2,657,860</span>
+                </p>
+                <p class="text-yellow-300">
+                  Margen: <span class="font-bold">70.0%</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 Lotes -->
+          <div
+            class="bg-white/5 p-4 md:p-6 rounded-lg border-2 border-yellow-500/30"
+          >
+            <h4
+              class="text-lg md:text-xl font-bold mb-3 text-center border-b border-white/20 pb-2"
+            >
+              3 Lotes ⭐
+            </h4>
+            <div class="space-y-2 text-xs md:text-sm">
+              <p class="text-gray-300 font-medium">Paquete Completo</p>
+              <p>
+                Ingresos: <span class="font-bold text-base">$6,084,000</span>
+              </p>
+              <p>C. Variables: <span class="font-bold">$1,224,395</span></p>
+              <p>C. Fijos: <span class="font-bold">$365,388</span></p>
+              <p class="text-green-400 mt-2 text-base">
+                U. Neta: <span class="font-bold">$4,494,217</span>
+              </p>
+              <p class="text-yellow-300 text-base">
+                Margen: <span class="font-bold">73.9%</span>
+              </p>
+
+              <div
+                class="mt-3 p-2 bg-yellow-500/10 rounded border border-yellow-500/30"
+              >
+                <p class="font-bold mb-1 text-xs">Punto de Equilibrio:</p>
+                <p class="text-xs">20 noches/año (6.4%)</p>
+                <p class="text-yellow-200 text-xs mt-1">
+                  ✓ Riesgo: <span class="font-bold">MUY BAJO</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-blue-500/10 p-3 md:p-4 rounded-lg border border-blue-500/30"
+        >
+          <p class="text-xs md:text-sm">
+            <span class="font-bold">Conclusión:</span> Excelente equilibrio entre
+            ocupación y rentabilidad. Combina ingresos entre semana con fines de
+            semana, generando márgenes superiores al 58% con alta demanda.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Summary Comparison Table -->
+  <div class="mt-8 bg-white/10 p-4 md:p-6 rounded-lg animate-section">
+    <h3
+      class="text-xl md:text-2xl font-bold mb-4 text-center animate-text-left"
+    >
+      Comparación de Escenarios (Paquete Completo - 3 Lotes)
+    </h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-xs md:text-sm">
+        <thead>
+          <tr class="border-b border-white/20">
+            <th class="text-left p-2">Escenario</th>
+            <th class="text-right p-2">Ingresos</th>
+            <th class="text-right p-2">Costos</th>
+            <th class="text-right p-2">U. Neta</th>
+            <th class="text-right p-2">Margen</th>
+            <th class="text-right p-2">P. Equilibrio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-white/10">
+            <td class="p-2">1. FDS 2 noches</td>
+            <td class="text-right p-2 font-bold">$2.81M</td>
+            <td class="text-right p-2">$772,920</td>
+            <td class="text-right p-2 text-green-300 font-bold">$2.04M</td>
+            <td class="text-right p-2 text-yellow-300 font-bold">72.5%</td>
+            <td class="text-right p-2 text-sm">19.2%</td>
+          </tr>
+          <tr class="border-b border-white/10 bg-green-500/10">
+            <td class="p-2 font-bold">2. 100% Total</td>
+            <td class="text-right p-2 font-bold">$7.49M</td>
+            <td class="text-right p-2">$1.79M</td>
+            <td class="text-right p-2 text-green-400 font-bold">$5.69M</td>
+            <td class="text-right p-2 text-yellow-300 font-bold">76.0%</td>
+            <td class="text-right p-2 text-sm">5.5%</td>
+          </tr>
+          <tr class="border-b border-white/10">
+            <td class="p-2">3. FDS 1 noche</td>
+            <td class="text-right p-2 font-bold">$1.40M</td>
+            <td class="text-right p-2">$569,155</td>
+            <td class="text-right p-2 text-green-300 font-bold">$834,845</td>
+            <td class="text-right p-2 text-yellow-300 font-bold">59.5%</td>
+            <td class="text-right p-2 text-sm">38.5%</td>
+          </tr>
+          <tr>
+            <td class="p-2">4. ES + FDS 1n</td>
+            <td class="text-right p-2 font-bold">$6.08M</td>
+            <td class="text-right p-2">$1.59M</td>
+            <td class="text-right p-2 text-green-300 font-bold">$4.49M</td>
+            <td class="text-right p-2 text-yellow-300 font-bold">73.9%</td>
+            <td class="text-right p-2 text-sm">6.4%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs mt-3 text-gray-300 text-center">
+      *Todos los cálculos basados en tarifas 2026 y costos actuales
+    </p>
+  </div>
+
+  <!-- Key Insights -->
+  <div class="grid md:grid-cols-2 gap-4 mt-8 animate-section pb-8">
+    <div
+      class="bg-green-500/10 p-4 rounded-lg border border-green-500/30 animate-text-left"
+    >
+      <h4 class="font-bold mb-2 text-sm md:text-base">
+        Fortalezas del Negocio
+      </h4>
+      <ul class="space-y-1 text-xs md:text-sm">
+        <li>• Márgenes superiores al 59% en todos los escenarios</li>
+        <li>• Punto de equilibrio alcanzable con baja ocupación</li>
+        <li>• Múltiples opciones de compra flexibles</li>
+        <li>• Escalabilidad comprobada (mejor margen con más cabañas)</li>
+      </ul>
+    </div>
+    <div
+      class="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 animate-text-right"
+    >
+      <h4 class="font-bold mb-2 text-sm md:text-base">Recomendaciones</h4>
+      <ul class="space-y-1 text-xs md:text-sm">
+        <li>• Paquete completo ofrece mejor rentabilidad</li>
+        <li>• Escenario 2 maximiza ingresos anuales</li>
+        <li>• Escenario 1 ideal para operación conservadora</li>
+        <li>• Diversificar ocupación entre ES y FDS reduce riesgo</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .scenario-tab {
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s ease;
+  }
+  .scenario-tab.active {
+    background: rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+  }
+  .scenario-data {
+    display: none;
+    opacity: 0;
+  }
+  .scenario-data.active {
+    display: block;
+    opacity: 1;
+  }
+  .scenario-data.fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  table {
+    border-collapse: collapse;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll(".scenario-tab");
+    const scenarios = document.querySelectorAll(".scenario-data");
+    let isAnimating = false;
+
+    // Animate the initial scenario on page load
+    const initialScenario = document.querySelector(".scenario-data.active");
+    if (initialScenario) {
+      gsap.fromTo(
+        initialScenario,
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          delay: 0.3,
+        }
+      );
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        if (isAnimating) return; // Prevent clicks during animation
+
+        const scenarioId = tab.getAttribute("data-scenario");
+        const currentScenario = document.querySelector(".scenario-data.active");
+        const targetScenario = document.querySelector(
+          `.scenario-data[data-scenario="${scenarioId}"]`
+        );
+
+        // If clicking the same tab, do nothing
+        if (currentScenario === targetScenario) return;
+
+        isAnimating = true;
+
+        // Animate out current scenario
+        if (currentScenario) {
+          gsap.to(currentScenario, {
+            opacity: 0,
+            y: -20,
+            duration: 0.3,
+            ease: "power2.in",
+            onComplete: () => {
+              currentScenario.classList.remove("active");
+
+              // Update tabs
+              tabs.forEach((t) => t.classList.remove("active"));
+              tab.classList.add("active");
+
+              // Animate in new scenario
+              if (targetScenario) {
+                targetScenario.classList.add("active");
+                gsap.fromTo(
+                  targetScenario,
+                  {
+                    opacity: 0,
+                    y: 30,
+                    scale: 0.95,
+                  },
+                  {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    duration: 0.5,
+                    ease: "power2.out",
+                    onComplete: () => {
+                      isAnimating = false;
+                    },
+                  }
+                );
+              } else {
+                isAnimating = false;
+              }
+            },
+          });
+        } else {
+          // First time loading
+          tabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          if (targetScenario) {
+            targetScenario.classList.add("active");
+            gsap.fromTo(
+              targetScenario,
+              {
+                opacity: 0,
+                y: 30,
+              },
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: "power2.out",
+                onComplete: () => {
+                  isAnimating = false;
+                },
+              }
+            );
+          } else {
+            isAnimating = false;
+          }
+        }
+      });
+    });
+  });
+</script>

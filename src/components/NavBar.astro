@@ -13,7 +13,9 @@
   <img
     src="/images/logo-white.png"
     alt="Logo"
-    class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-24 object-contain"
+    id="navbar-logo"
+    class="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-24 object-contain transition-all duration-500 ease-out"
+    style="will-change: transform, opacity;"
   />
   <div class="menu-overlay">
     <div class="menu-overlay-content">
@@ -65,6 +67,24 @@
   import Lenis from "lenis";
 
   document.addEventListener("DOMContentLoaded", () => {
+    // Simple logo scroll animation using native JavaScript
+    const logo = document.getElementById("navbar-logo");
+    let lastScroll = 0;
+    
+    if (logo) {
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Calculate opacity and transform based on scroll (0-200px range)
+        const scrollProgress = Math.min(currentScroll / 200, 1);
+        
+        // Apply transformations - maintain horizontal centering with translateX(-50%)
+        logo.style.transform = `translateX(-50%) translateY(${-100 * scrollProgress}px)`;
+        logo.style.opacity = String(1 - scrollProgress);
+        
+        lastScroll = currentScroll;
+      });
+    }
     // Check if not on home page and modify menu
     if (window.location.pathname !== "/") {
       const menuCol = document.querySelector(".menu-content-main .menu-col");

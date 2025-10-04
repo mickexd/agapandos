@@ -9,6 +9,7 @@
       src="/images/seccion2.jpg"
       alt="Seccion 2 Background"
       class="w-full h-full object-cover filter blur-xs"
+      loading="lazy"
     />
     <div class="absolute inset-0 bg-black/30"></div>
   </div>
@@ -21,6 +22,7 @@
         src="/images/seccion2.jpg"
         alt="Seccion 2 Image"
         class="h-[85%] w-auto rounded-xl self-end"
+        loading="lazy"
       />
     </div>
     <div
@@ -29,7 +31,7 @@
       <div class="shadow-md">
         <h1
           id="seccion2-h1"
-          class="backdrop-blur bg-black/20 text-white text-4xl md:text-5xl xl:text-4xl 2xl:text-6xl font- text-center mb-4 lg:mb-0 lg:absolute md:top-1/5 xl:top-1/5 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 lg:w-auto lg:py-2 lg:px-4 shadow-letter italianno-regular text-shadow-md rounded-xl"
+          class="backdrop-blur bg-black/20 text-white text-4xl md:text-6xl font- text-center mb-4 lg:mb-0 lg:absolute md:top-1/5 xl:top-1/5 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 z-10 lg:w-auto lg:py-2 lg:px-4 shadow-letter italianno-regular text-shadow-md rounded-xl"
         >
           Un lugar para descansar
         </h1>
@@ -82,6 +84,9 @@
       const img = document.getElementById("seccion2-image");
 
       if (section && h1 && p && img) {
+        // Set will-change for better performance
+        gsap.set([h1, p, img], { willChange: "transform, opacity" });
+
         // Set initial states
         gsap.set([h1, p, img], { opacity: 0 });
         gsap.set(h1, { y: 100 });
@@ -93,6 +98,7 @@
             trigger: section,
             start: "top 80%",
             toggleActions: "play reverse play reverse",
+            invalidateOnRefresh: false,
           },
         });
 

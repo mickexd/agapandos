@@ -31,6 +31,9 @@ import "../StickyCards/stickyCards.css";
     // Animate the main title
     const title = document.getElementById("servicios");
     if (title) {
+      // Set will-change for better performance
+      gsap.set(title, { willChange: "transform, opacity" });
+
       // Set initial state
       gsap.set(title, {
         opacity: 0,
@@ -49,6 +52,7 @@ import "../StickyCards/stickyCards.css";
           trigger: title,
           start: "top 85%",
           toggleActions: "play reverse play reverse",
+          invalidateOnRefresh: false,
         },
       });
     }
@@ -67,7 +71,7 @@ import "../StickyCards/stickyCards.css";
         <div class="sticky-card-content-wrapper">
           <h1 class="sticky-card-header text-white italianno-regular">${cardData.title}</h1>
           <div class="sticky-card-img">
-            <img src="${cardData.image}" alt="" class="rounded-xl" />
+            <img src="${cardData.image}" alt="" class="rounded-xl" loading="lazy" />
           </div>
           <div class="sticky-card-copy">
             <div class="sticky-card-copy-title"></div>
@@ -85,6 +89,21 @@ import "../StickyCards/stickyCards.css";
     });
 
     const stickyCards = document.querySelectorAll(".sticky-card");
+    
+    // Add responsive spacing to prevent overlap
+    if (container && container instanceof HTMLElement) {
+      // Use smaller padding on mobile, larger on desktop
+      const isMobile = window.innerWidth < 768;
+      container.style.paddingBottom = isMobile ? `10svh` : `30svh`;
+      
+      // Update padding on resize
+      window.addEventListener('resize', () => {
+        const isMobileResize = window.innerWidth < 768;
+        if (container instanceof HTMLElement) {
+          container.style.paddingBottom = isMobileResize ? `10svh` : `30svh`;
+        }
+      });
+    }
 
     stickyCards.forEach((card, index) => {
       if (index < stickyCards.length - 1) {
@@ -95,6 +114,7 @@ import "../StickyCards/stickyCards.css";
           end: "top top",
           pin: true,
           pinSpacing: false,
+          invalidateOnRefresh: false,
         });
       }
 
@@ -103,6 +123,7 @@ import "../StickyCards/stickyCards.css";
           trigger: stickyCards[index + 1],
           start: "top bottom",
           end: "top top",
+          invalidateOnRefresh: false,
           onUpdate: (self) => {
             const progress = self.progress;
             const scale = 1 - progress * 0.25;
