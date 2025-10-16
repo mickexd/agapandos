@@ -29,8 +29,8 @@
             <div class="menu-link">
               <a href="#servicios">Servicios y Experiencias</a>
             </div>
-            <div class="menu-link"><a href="#galeria">Galeria</a></div>
-            <div class="menu-link"><a href="#galeria360">Galeria 360</a></div>
+            <div class="menu-link"><a href="#galeria-section4">Galería</a></div>
+            <div class="menu-link"><a href="#galeria360">Galería 360</a></div>
             <div class="menu-link">
               <a href="#reservaciones">Reservaciones</a>
             </div>
@@ -98,20 +98,20 @@
     CustomEase.create("hop", ".87,0,.13,1");
 
     const lenis = new Lenis();
-    function raf(time) {
+    function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
 
-    const textContainers = document.querySelectorAll(".menu-col");
-    let splitTextByContainer = [];
+    const textContainers: NodeListOf<HTMLElement> = document.querySelectorAll(".menu-col");
+    let splitTextByContainer: SplitText[][] = [];
 
-    textContainers.forEach((container) => {
-      const textElements = container.querySelectorAll("a, p");
-      let containerSplits = [];
+    textContainers.forEach((container: HTMLElement) => {
+      const textElements: NodeListOf<HTMLElement> = container.querySelectorAll("a, p");
+      let containerSplits: SplitText[] = [];
 
-      textElements.forEach((element) => {
+      textElements.forEach((element: HTMLElement) => {
         const split = SplitText.create(element, {
           type: "lines",
           mask: "lines",
@@ -125,21 +125,21 @@
       splitTextByContainer.push(containerSplits);
     });
 
-    const container = document.querySelector(".container");
-    const menuToggleBtn = document.querySelector(".menu-toggle-btn");
-    const menuOverlay = document.querySelector(".menu-overlay");
+    const container = document.querySelector(".container") as HTMLElement | null;
+    const menuToggleBtn = document.querySelector(".menu-toggle-btn") as HTMLElement | null;
+    const menuOverlay = document.querySelector(".menu-overlay") as HTMLElement | null;
     const menuOverlayContainer = document.querySelector(
       ".menu-overlay-content"
-    );
-    const menuMediaWrapper = document.querySelector(".menu-media-wrapper");
-    const copyContainers = document.querySelectorAll(".menu-col");
-    const menuToggleLabel = document.querySelector(".menu-toggle-label p");
-    const hamburgerIcon = document.querySelector(".menu-hamburger-icon");
+    ) as HTMLElement | null;
+    const menuMediaWrapper = document.querySelector(".menu-media-wrapper") as HTMLElement | null;
+    const copyContainers = document.querySelectorAll(".menu-col") as NodeListOf<HTMLElement>;
+    const menuToggleLabel = document.querySelector(".menu-toggle-label p") as HTMLElement | null;
+    const hamburgerIcon = document.querySelector(".menu-hamburger-icon") as HTMLElement | null;
 
-    let isMenuOpen = false;
-    let isAnimating = false;
+    let isMenuOpen: boolean = false;
+    let isAnimating: boolean = false;
 
-    menuToggleBtn.addEventListener("click", () => {
+    menuToggleBtn?.addEventListener("click", () => {
       if (isAnimating) return;
 
       if (!isMenuOpen) {
@@ -213,7 +213,7 @@
           );
         });
 
-        hamburgerIcon.classList.add("active");
+        hamburgerIcon?.classList.add("active");
 
         tl.call(() => {
           isAnimating = false;
@@ -223,7 +223,7 @@
       } else {
         isAnimating = true;
 
-        hamburgerIcon.classList.remove("active");
+        hamburgerIcon?.classList.remove("active");
         const tl = gsap.timeline();
 
         // Remove class from body when menu is closed
@@ -272,13 +272,13 @@
           );
 
         tl.call(() => {
-          splitTextByContainer.forEach((containerSplits) => {
-            const copyLines = containerSplits.flatMap((split) => split.lines);
+          splitTextByContainer.forEach((containerSplits: SplitText[]) => {
+            const copyLines = containerSplits.flatMap((split: SplitText) => split.lines);
             gsap.set(copyLines, { y: "-110%" });
           });
 
           gsap.set(copyContainers, { opacity: 1 });
-          gsap.set(menuMediaWrapper, { opacity: 0 });
+          gsap.set(menuMediaWrapper!, { opacity: 0 });
 
           isAnimating = false;
           lenis.start();
@@ -301,22 +301,22 @@
           if (targetElement) {
             // Close the menu first if it's open
             if (isMenuOpen && !isAnimating) {
-              menuToggleBtn.click();
+              menuToggleBtn?.click();
 
               // Wait for menu close animation to complete before scrolling
               setTimeout(() => {
-                lenis.scrollTo(targetElement, {
+                lenis.scrollTo(targetElement as HTMLElement, {
                   offset: 0,
                   duration: 1.5,
-                  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                  easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 });
               }, 1000);
             } else {
               // Menu is already closed, scroll immediately
-              lenis.scrollTo(targetElement, {
+              lenis.scrollTo(targetElement as HTMLElement, {
                 offset: 0,
                 duration: 1.5,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
               });
             }
           }

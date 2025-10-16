@@ -135,9 +135,10 @@ body.menu-open .menu-overlay-content {
 
 .menu-overlay-content {
   display: flex;
-  transform: translateY(-50%);
+  /* Removed transform: translateY(-50%); to prevent vertical clipping */
   will-change: transform;
   pointer-events: all;
+  height: 100%; /* Ensure it fills the parent's height */
 }
 
 .menu-media-wrapper {
@@ -155,30 +156,32 @@ body.menu-open .menu-overlay-content {
   flex: 3;
   position: relative;
   display: flex;
+  flex-direction: column; /* Added flex-direction column */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 2rem; /* Add some padding to the wrapper */
 }
 
 .menu-content-main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative; /* Changed to relative positioning */
   width: 75%;
-  padding: 2rem;
+  padding: 1.5rem; /* Reduced padding */
   display: flex;
-  align-items: flex-end;
-  gap: 2rem;
+  flex-direction: column; /* Changed to column for better vertical flow */
+  align-items: flex-start; /* Align items to the start */
+  gap: 1rem; /* Reduced gap */
+  margin-bottom: 1rem; /* Add margin to separate from footer */
+  margin-top: 5rem; /* Added top margin to push content down */
 }
 
 .menu-footer {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; /* Changed to relative positioning */
   width: 75%;
-  padding: 2rem;
+  padding: 1.5rem; /* Reduced padding */
   display: flex;
-  align-items: flex-end;
-  gap: 2rem;
+  flex-direction: column; /* Changed to column for better vertical flow */
+  align-items: flex-start; /* Align items to the start */
+  gap: 1rem; /* Reduced gap */
 }
 
 .menu-col {
@@ -229,16 +232,20 @@ body.menu-open .menu-overlay-content {
 /* Handle high zoom levels on desktop (effective viewport 1001-1400px) */
 @media (max-width: 1400px) and (min-width: 1001px) {
   .menu-link a {
-    font-size: clamp(2.2rem, 2.8vw, 3rem);
+    font-size: clamp(1.8rem, 2.5vw, 2.5rem); /* Adjusted for smaller font at higher zoom */
   }
   
   .menu-content-main {
-    width: 85%;
-    gap: 1.5rem;
+    width: 95%; /* Further increased width */
+    padding: 1rem; /* Further reduced padding */
+    gap: 0.8rem; /* Further reduced gap */
+    margin-top: 3rem; /* Adjusted top margin for smaller screens */
   }
   
   .menu-footer {
-    width: 85%;
+    width: 95%; /* Further increased width */
+    padding: 1rem; /* Further reduced padding */
+    gap: 0.8rem; /* Further reduced gap */
   }
 }
 
@@ -253,22 +260,50 @@ body.menu-open .menu-overlay-content {
   }
 
   .menu-content-main {
-    top: 40%;
+    top: auto; /* Remove fixed top positioning */
+    transform: none; /* Remove transform */
     flex-direction: column;
     align-items: flex-start;
-    gap: 5rem;
+    gap: 2rem; /* Reduced gap */
+    padding: 1rem; /* Reduced padding */
   }
 
   .menu-footer {
-    bottom: 2rem;
+    bottom: auto; /* Remove fixed bottom positioning */
+    transform: none; /* Remove transform */
+    padding: 1rem; /* Reduced padding */
   }
 
   .menu-link a {
-    font-size: clamp(2rem, 3vw, 3rem);
+    font-size: clamp(1.6rem, 2.5vw, 2.2rem); /* Adjusted for smaller font at higher zoom */
   }
 
   .menu-tag a {
     font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .menu-link a {
+    font-size: clamp(1.4rem, 2.2vw, 2rem); /* Even smaller font size */
+    line-height: 1.2;
+  }
+
+  .menu-tag a,
+  .menu-footer p {
+    font-size: 0.85rem; /* Smaller font size for tags and footer */
+    line-height: 1.3;
+  }
+
+  .menu-content-main {
+    gap: 1rem; /* Further reduced gap */
+    padding: 0.5rem; /* Further reduced padding */
+    margin-top: 2rem; /* Adjusted top margin for smaller screens */
+  }
+
+  .menu-footer {
+    gap: 0.5rem; /* Further reduced gap */
+    padding: 0.5rem; /* Further reduced padding */
   }
 }
 
@@ -288,7 +323,9 @@ body.menu-open .menu-overlay-content {
   }
   
   .menu-content-main {
-    gap: 3rem;
+    gap: 1.5rem; /* Further reduced gap */
+    padding: 0.8rem; /* Further reduced padding */
+    margin-top: 2.5rem; /* Adjusted top margin for smaller screens */
   }
   
   /* Hide full versions and show mobile versions on tablet and smaller */
@@ -321,15 +358,16 @@ body.menu-open .menu-overlay-content {
   }
   
   .menu-content-main {
-    padding: 1.5rem;
-    gap: 1.5rem;
-    top: 35%;
+    padding: 0.5rem; /* Further reduced padding */
+    gap: 0.8rem; /* Further reduced gap */
+    top: auto; /* Remove fixed top positioning */
+    margin-top: 1.5rem; /* Adjusted top margin for smaller screens */
   }
   
   .menu-footer {
-    padding: 1.5rem;
-    gap: 1rem;
-    bottom: 1rem;
+    padding: 0.5rem; /* Further reduced padding */
+    gap: 0.5rem; /* Further reduced gap */
+    bottom: auto; /* Remove fixed bottom positioning */
     flex-direction: column;
   }
   

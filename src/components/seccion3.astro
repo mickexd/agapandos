@@ -94,13 +94,13 @@ import "../StickyCards/stickyCards.css";
     if (container && container instanceof HTMLElement) {
       // Use smaller padding on mobile, larger on desktop
       const isMobile = window.innerWidth < 768;
-      container.style.paddingBottom = isMobile ? `10svh` : `30svh`;
+      container.style.paddingBottom = isMobile ? `20svh` : `40svh`; /* Increased padding */
       
       // Update padding on resize
       window.addEventListener('resize', () => {
         const isMobileResize = window.innerWidth < 768;
         if (container instanceof HTMLElement) {
-          container.style.paddingBottom = isMobileResize ? `10svh` : `30svh`;
+          container.style.paddingBottom = isMobileResize ? `20svh` : `40svh`; /* Increased padding */
         }
       });
     }
@@ -113,7 +113,7 @@ import "../StickyCards/stickyCards.css";
           endTrigger: stickyCards[stickyCards.length - 1],
           end: "top top",
           pin: true,
-          pinSpacing: false,
+          pinSpacing: true, /* Changed to true to ensure proper spacing */
           invalidateOnRefresh: false,
         });
       }
